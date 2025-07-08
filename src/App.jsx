@@ -1,35 +1,41 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import React from "react";
+import style from "./App.module.css";
+import Overlay from "./components/overlay/Overlay";
+import Navbar from "./components/navbar/Navbar";
 
-function App() {
-  const [count, setCount] = useState(0)
+const App = () => {
+    const handleClick = (section) => {
+        const element = document.getElementById(section);
+        if (element) {
+            element.scrollIntoView({ behavior: "smooth" });
+        }
+    };
+    return (
+        <div className={style.App}>
+            <section className={style.AppHero} id="home">
+                <Overlay top={-250} left={-350} right={0} bottom={0} />
+                <Navbar onClick={handleClick} />
 
-  return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
-}
+                <main className={style.AppMain}>
+                    <h1>WEB DEVELOPER</h1>
+                    <p>
+                        Hi, I'm Luca web developer & UI enthusiast.{" "}
+                        <span>Get my CV</span>
+                    </p>
+                </main>
 
-export default App
+                <div className={style.AppDiveIn}>
+                    <img src="../public/double-arrow-bottom-icon.svg" alt="" srcset="" />
+                    <h4>DIVE IN</h4>
+                    <img src="../public/double-arrow-bottom-icon.svg" alt="" srcset="" />
+                </div>
+            </section>
+
+            <section id="about" className={style.AppAbout}></section>
+            <section id="projects" className={style.AppProjects}></section>
+            <section id="contact" className={style.AppContact}></section>
+        </div>
+    );
+};
+
+export default App;
