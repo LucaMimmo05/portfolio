@@ -9,4 +9,6 @@
     );
     width: 853px;
     height: 648px;
+    overflow: hidden;
+
 }

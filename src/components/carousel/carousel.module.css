@@ -1,0 +1,25 @@
+.Carousel {
+    display: flex;
+    gap: 17px;
+    overflow: hidden;
+    user-select: none;
+    width: 350px;
+
+    & ul {
+        list-style-type: none;
+        display: flex;
+        gap: 17px;
+        justify-content: space-between;
+        align-items: center;
+        flex-shrink: 0;
+        min-width: 100%;
+        animation: scroll 15s linear infinite;
+    }
+}
+
+@keyframes scroll {
+    to {
+        transform: translateX(calc(-100% - 20px));
+    }
+}
+

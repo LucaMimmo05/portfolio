@@ -1,9 +1,11 @@
 .App {
     padding: 0 75px;
     height: 100%;
+    overflow: hidden;
 
     & .AppHero {
         height: 100vh;
+        position: relative;
 
         & .AppMain {
             display: flex;
@@ -78,6 +80,108 @@
 
     & .AppAbout {
         height: 100vh;
+        display: flex;
+        position: relative;
+        align-items: center;
+        justify-content: center;
+        color: var(--white);
+
+        & .AppAboutLeft,
+        & .AppAboutRight {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        & .AppAboutLeft {
+            display: flex;
+            gap: 20px;
+
+            & h3 {
+                font-size: 64px;
+                font-style: normal;
+                font-weight: 300;
+                line-height: 1;
+
+                &:nth-child(3) {
+                    font-size: 32px;
+                    font-style: normal;
+                    font-weight: 400;
+                    line-height: normal;
+                }
+            }
+
+            & .AppAboutLeftText {
+                display: flex;
+                flex-direction: column;
+
+                & .AppAboutLeftTitle {
+                    display: flex;
+                    flex-direction: column;
+                    gap: 0px;
+
+                    & h1 {
+                        font-size: 100px;
+                        font-style: normal;
+                        font-weight: 700;
+                        line-height: 1;
+
+                        &:nth-child(2) {
+                            color: var(--primary-color);
+                        }
+                    }
+                }
+            }
+
+            & hr {
+                border: 1px solid #1d1d1d;
+                border-radius: 5px;
+            }
+
+            & p {
+                font-size: 16px;
+                font-style: normal;
+                font-weight: 300;
+                line-height: normal;
+            }
+        }
+
+        & .AppAboutRight {
+            justify-content: center;
+            align-items: center;
+
+            & .AppAboutRightContent {
+                width: auto;
+                display: flex;
+                flex-direction: column;
+                gap: 40px;
+                & .AppAboutRightImage {
+                    width: 300px;
+                    height: 300px;
+                    border-radius: 50%;
+                    background-image: url("../public/my-image.jpg");
+                    background-position: center;
+                    background-size: cover;
+                    background-repeat: no-repeat;
+                }
+
+                & .AppAboutRightSkills {
+                    display: flex;
+                    width: 100%;
+                    align-items: flex-start;
+                    justify-content: flex-start;
+                    flex-direction: column;
+                    gap: 10px;
+                    & h3 {
+                        font-size: 30px;
+                        font-style: normal;
+                        font-weight: 300;
+                        line-height: normal;
+                        text-align: left;
+                    }
+                }
+            }
+        }
     }
 }
 
