@@ -27,13 +27,13 @@ const App = () => {
 
                 <div className={style.AppDiveIn}>
                     <img
-                        src="../public/double-arrow-bottom-icon.svg"
+                        src="/double-arrow-bottom-icon.svg"
                         alt=""
                         srcset=""
                     />
                     <h4>DIVE IN</h4>
                     <img
-                        src="../public/double-arrow-bottom-icon.svg"
+                        src="/double-arrow-bottom-icon.svg"
                         alt=""
                         srcset=""
                     />
