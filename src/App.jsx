@@ -13,11 +13,11 @@ const App = () => {
     };
     return (
         <div className={style.App}>
-            <section className={style.AppHero} id="home">
+            <section className={style.Hero} id="home">
                 <Overlay top={-250} left={-350} right={0} bottom={0} />
                 <Navbar onClick={handleClick} />
 
-                <main className={style.AppMain}>
+                <main className={style.Main}>
                     <h1>WEB DEVELOPER</h1>
                     <p>
                         Hi, I'm Luca web developer & UI enthusiast.{" "}
@@ -25,27 +25,19 @@ const App = () => {
                     </p>
                 </main>
 
-                <div className={style.AppDiveIn}>
-                    <img
-                        src="/double-arrow-bottom-icon.svg"
-                        alt=""
-                        srcset=""
-                    />
+                <div className={style.DiveIn}>
+                    <img src="/double-arrow-bottom-icon.svg" alt="" srcset="" />
                     <h4>DIVE IN</h4>
-                    <img
-                        src="/double-arrow-bottom-icon.svg"
-                        alt=""
-                        srcset=""
-                    />
+                    <img src="/double-arrow-bottom-icon.svg" alt="" srcset="" />
                 </div>
             </section>
 
-            <section id="about" className={style.AppAbout}>
+            <section id="about" className={style.About}>
                 <Overlay top={-150} left={900} right={0} bottom={0} />
-                <div className={style.AppAboutLeft}>
-                    <div className={style.AppAboutLeftText}>
+                <div className={style.AboutLeft}>
+                    <div className={style.AboutLeftText}>
                         <h3>I'm</h3>
-                        <div className={style.AppAboutLeftTitle}>
+                        <div className={style.AboutLeftTitle}>
                             <h1>Luca</h1>
                             <h1>Mimmo</h1>
                         </div>
@@ -58,19 +50,18 @@ const App = () => {
                         Always working on cool side projects.
                     </p>
                 </div>
-                <div className={style.AppAboutRight}>
-                    <div className={style.AppAboutRightContent}>
-                        <div className={style.AppAboutRightImage}></div>
-                        <div className={style.AppAboutRightSkills}>
+                <div className={style.AboutRight}>
+                    <div className={style.AboutRightContent}>
+                        <div className={style.AboutRightImage}></div>
+                        <div className={style.AboutRightSkills}>
                             <h3>Skills</h3>
-                            <Carousel/>
+                            <Carousel />
                         </div>
-                        
                     </div>
                 </div>
             </section>
-            <section id="projects" className={style.AppProjects}></section>
-            <section id="contact" className={style.AppContact}></section>
+            <section id="projects" className={style.Projects}></section>
+            <section id="contact" className={style.Contact}></section>
         </div>
     );
 };
