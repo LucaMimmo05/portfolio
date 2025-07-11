@@ -1,0 +1,21 @@
+.KeyCard {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    gap: 18px;
+    width: 400px;
+
+    & h3 {
+        font-size: 20px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: normal;
+    }
+
+    & p {
+        font-size: 14px;
+        font-style: normal;
+        font-weight: 300;
+        line-height: normal;
+    }
+}

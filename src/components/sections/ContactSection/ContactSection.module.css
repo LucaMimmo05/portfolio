@@ -1,0 +1,9 @@
+.Contact {
+    height: 100vh;
+    display: flex;
+    position: relative;
+    align-items: center;
+    justify-content: center;
+    color: var(--white);
+    /* Aggiungi qui gli stili per la sezione contatti */
+}

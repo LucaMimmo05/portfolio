@@ -4,6 +4,38 @@
     overflow: hidden;
     user-select: none;
     width: 350px;
+    position: relative;
+    
+    &::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 40px;
+        height: 100%;
+        background: linear-gradient(
+            to right,
+            var(--bg-color, #000),
+            transparent
+        );
+        z-index: 2;
+        pointer-events: none;
+    }
+    &::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 40px;
+        height: 100%;
+        background: linear-gradient(
+            to left,
+            var(--bg-color, #000),
+            transparent
+        );
+        z-index: 2;
+        pointer-events: none;
+    }
 
     & ul {
         list-style-type: none;
@@ -22,4 +54,3 @@
         transform: translateX(calc(-100% - 20px));
     }
 }
-
