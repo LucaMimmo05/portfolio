@@ -1,9 +1,11 @@
 import styles from "./KeySection.module.css";
 import KeyCard from "./KeyCard/KeyCard";
+import Overlay from "../../overlay/Overlay";
 
 const KeySection = () => {
     return (
         <section id="key" className={styles.KeySection}>
+            <Overlay bottom={-250} right={-400}/>
             <h2>Key Points</h2>
             <div className={styles.KeyCards}>
                 <KeyCard title="Full Stack Development" description="Designed and developed complete web applications, managing frontend, backend, authentication, and database operations." />

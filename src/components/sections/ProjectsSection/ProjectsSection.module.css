@@ -19,9 +19,6 @@
             font-style: normal;
             font-weight: 600;
             line-height: normal;
-            opacity: 0;
-            transform: translateY(30px);
-            transition: all 1s ease-out;
         }
 
         & .ProjectList {
@@ -31,24 +28,10 @@
             width: 100%;
             scrollbar-width: none;
             -ms-overflow-style: none;
-            opacity: 0;
-            transform: translateY(50px);
-            transition: all 1s ease-out 0.3s;
 
             &::-webkit-scrollbar {
                 display: none;
             }
         }
-    }
-
-    /* Stato animato quando la sezione è visibile */
-    &.visible .ProjectTitle {
-        opacity: 1;
-        transform: translateY(0);
-    }
-
-    &.visible .ProjectList {
-        opacity: 1;
-        transform: translateY(0);
     }
 }

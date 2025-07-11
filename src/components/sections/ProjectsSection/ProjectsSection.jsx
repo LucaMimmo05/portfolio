@@ -2,16 +2,12 @@ import React from "react";
 import style from "./ProjectsSection.module.css";
 import Overlay from "../../overlay/Overlay";
 import ProjectCard from "./ProjectCard/ProjectCard";
-import { useIntersectionObserver } from "../../../hooks/useIntersectionObserver";
 
 const ProjectsSection = () => {
-    const [ref, isVisible] = useIntersectionObserver();
-
     return (
         <section
-            ref={ref}
             id="projects"
-            className={`${style.Projects} ${isVisible ? style.visible : ""}`}
+            className={style.Projects}
         >
             <Overlay top={-300} left={-400} />
             <div className={style.ProjectContent}>

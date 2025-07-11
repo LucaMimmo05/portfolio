@@ -2,17 +2,10 @@ import React from "react";
 import style from "./AboutSection.module.css";
 import Overlay from "../../overlay/Overlay";
 import Carousel from "../../carousel/Carousel";
-import { useIntersectionObserver } from "../../../hooks/useIntersectionObserver";
 
 const AboutSection = () => {
-    const [ref, isVisible] = useIntersectionObserver();
-
     return (
-        <section
-            ref={ref}
-            id="about"
-            className={`${style.About} ${isVisible ? style.visible : ""}`}
-        >
+        <section id="about" className={style.About}>
             <Overlay top={-150} left={900} right={0} bottom={0} />
             <div className={style.AboutLeft}>
                 <div className={style.AboutLeftText}>

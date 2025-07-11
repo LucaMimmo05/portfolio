@@ -24,9 +24,6 @@
     font-style: normal;
     font-weight: 300;
     line-height: 1;
-    opacity: 0;
-    transform: translateX(-50px);
-    transition: all 1s ease-out;
 }
 
 .AboutLeft h3:nth-child(3) {
@@ -34,7 +31,6 @@
     font-style: normal;
     font-weight: 400;
     line-height: normal;
-    transition-delay: 1s;
 }
 
 .AboutLeftText {
@@ -53,18 +49,10 @@
     font-style: normal;
     font-weight: 700;
     line-height: 1;
-    opacity: 0;
-    transform: translateX(-50px);
-    transition: all 1s ease-out;
-}
-
-.AboutLeftTitle h1:nth-child(1) {
-    transition-delay: 0.3s;
 }
 
 .AboutLeftTitle h1:nth-child(2) {
     color: var(--primary-color);
-    transition-delay: 0.6s;
 }
 
 .AboutLeft hr {
@@ -77,9 +65,6 @@
     font-style: normal;
     font-weight: 300;
     line-height: normal;
-    opacity: 0;
-    transform: translateX(-50px);
-    transition: all 1s ease-out 1.2s;
 }
 
 .AboutRight {
@@ -102,9 +87,6 @@
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
-    opacity: 0;
-    transform: scale(0.8);
-    transition: all 1s ease-out 0.8s;
 }
 
 .AboutRightSkills {
@@ -122,35 +104,6 @@
     font-weight: 300;
     line-height: normal;
     text-align: left;
-    opacity: 0;
-    transform: translateX(50px);
-    transition: all 1s ease-out 1s;
-}
-
-/* Stato animato quando la sezione è visibile */
-.About.visible .AboutLeft h3 {
-    opacity: 1;
-    transform: translateX(0);
-}
-
-.About.visible .AboutLeftTitle h1 {
-    opacity: 1;
-    transform: translateX(0);
-}
-
-.About.visible .AboutLeft p {
-    opacity: 1;
-    transform: translateX(0);
-}
-
-.About.visible .AboutRightImage {
-    opacity: 1;
-    transform: scale(1);
-}
-
-.About.visible .AboutRightSkills h3 {
-    opacity: 1;
-    transform: translateX(0);
 }
 
 @keyframes fadeInLeft {
