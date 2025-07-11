@@ -5,10 +5,7 @@ import ProjectCard from "./ProjectCard/ProjectCard";
 
 const ProjectsSection = () => {
     return (
-        <section
-            id="projects"
-            className={style.Projects}
-        >
+        <section id="projects" className={style.Projects}>
             <Overlay top={-300} left={-400} />
             <div className={style.ProjectContent}>
                 <h2 className={style.ProjectTitle}>Projects</h2>

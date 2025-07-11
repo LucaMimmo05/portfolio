@@ -10,9 +10,11 @@
 
 html {
     height: 100%;
+    scrollbar-width: thin;
+    scrollbar-color: var(--primary-color) var(--background-color);
 }
 
-*{
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -22,3 +24,25 @@ body {
     background: var(--background-color);
     min-height: 100%;
 }
+
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: transparent;
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, var(--primary-color) 0%, #5a1d20 100%);
+    border-radius: 10px;
+    border: 1px solid rgba(254, 254, 254, 0.1);
+    transition: all 0.3s ease;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(180deg, #a13438 0%, var(--primary-color) 100%);
+    box-shadow: 0 0 10px rgba(139, 45, 48, 0.3);
+}
+
