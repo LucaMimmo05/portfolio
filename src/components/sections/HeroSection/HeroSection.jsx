@@ -7,6 +7,15 @@ import { useIntersectionObserver } from "../../../hooks/useIntersectionObserver"
 const HeroSection = ({ onNavClick }) => {
     const [ref, isVisible] = useIntersectionObserver();
 
+    const handleDownload = () => {
+        var link = document.createElement("a");
+        link.href = "/CV-MIMMO.zip";
+        link.download = "CV-MIMMO.zip";
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+    }
+
     return (
         <section
             ref={ref}
@@ -20,7 +29,7 @@ const HeroSection = ({ onNavClick }) => {
                 <h1>WEB DEVELOPER</h1>
                 <p>
                     Hi, I'm Luca web developer & UI enthusiast.{" "}
-                    <span>Get my CV</span>
+                    <span onClick={() => handleDownload()}>Get my CV</span>
                 </p>
             </main>
 
