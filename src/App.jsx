@@ -5,6 +5,8 @@ import AboutSection from "./components/sections/AboutSection/AboutSection";
 import ProjectsSection from "./components/sections/ProjectsSection/ProjectsSection";
 import ContactSection from "./components/sections/ContactSection/ContactSection";
 import KeySection from "./components/sections/KeySection/KeySection";
+import Navbar from "./components/navbar/Navbar";
+import Footer from "./components/sections/Footer/Footer";
 
 const App = () => {
     const handleClick = (section) => {
@@ -15,11 +17,13 @@ const App = () => {
     };
     return (
         <div className={style.App}>
+            <Navbar onClick={handleClick} />
             <HeroSection onNavClick={handleClick} />
             <AboutSection />
             <ProjectsSection />
             <KeySection/>
             <ContactSection />
+            <Footer/>
         </div>
     );
 };

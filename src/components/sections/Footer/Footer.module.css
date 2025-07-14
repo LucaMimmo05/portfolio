@@ -1,0 +1,57 @@
+.Footer {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 20vh;
+    padding-block: 15px;
+
+    & .FooterTop {
+        flex: 1;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        & h3 {
+            color: var(--white);
+            font-size: 24px;
+            font-style: normal;
+            font-weight: 700;
+            line-height: normal;
+        }
+
+        & button {
+            display: flex;
+            width: auto;
+            padding: 10px 20px;
+            height: 50px;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            border-radius: 10px;
+            background: rgba(139, 45, 48, 0.5);
+            border: none;
+            color: var(--white);
+            font-size: 14px;
+            font-style: normal;
+            font-weight: 500;
+            line-height: normal;
+            cursor: pointer;
+        }
+    }
+
+    & .FooterBottom {
+        flex: 1;
+        display: flex;
+        align-items: center;
+
+        & p {
+            color: #fff;
+            font-family: Poppins;
+            font-size: 14px;
+            font-style: normal;
+            font-weight: 400;
+            line-height: normal;
+        }
+    }
+}
