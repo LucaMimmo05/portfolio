@@ -4,7 +4,7 @@ import Overlay from "../../overlay/Overlay";
 import Navbar from "../../navbar/Navbar";
 import { useIntersectionObserver } from "../../../hooks/useIntersectionObserver";
 
-const HeroSection = ({ onNavClick }) => {
+const HeroSection = () => {
     const [ref, isVisible] = useIntersectionObserver();
 
     const handleDownload = () => {
@@ -23,7 +23,7 @@ const HeroSection = ({ onNavClick }) => {
             id="home"
         >
             <Overlay top={-250} left={-350} right={0} bottom={0} />
-            <Navbar onClick={onNavClick} />
+            
 
             <main className={style.Main}>
                 <h1>WEB DEVELOPER</h1>
