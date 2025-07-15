@@ -7,8 +7,11 @@ import ContactSection from "./components/sections/ContactSection/ContactSection"
 import KeySection from "./components/sections/KeySection/KeySection";
 import Navbar from "./components/navbar/Navbar";
 import Footer from "./components/sections/Footer/Footer";
+import { useIsMobile } from "./hooks/useIsMobile";
+import BurgerMenu from "./components/burgerMenu/BurgerMenu";
 
 const App = () => {
+    const isMobile = useIsMobile();
     const handleClick = (section) => {
         const element = document.getElementById(section);
         if (element) {
@@ -17,13 +20,17 @@ const App = () => {
     };
     return (
         <div className={style.App}>
-            <Navbar onClick={handleClick} />
+            {isMobile ? (
+                <BurgerMenu onClick={handleClick} />
+            ) : (
+                <Navbar onClick={handleClick} />
+            )}
             <HeroSection onNavClick={handleClick} />
             <AboutSection />
             <ProjectsSection />
-            <KeySection/>
+            <KeySection />
             <ContactSection />
-            <Footer/>
+            <Footer />
         </div>
     );
 };
