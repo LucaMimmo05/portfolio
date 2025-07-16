@@ -1,0 +1,11 @@
+.GridItem {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    justify-content: space-between;
+    gap: 30px;
+
+    & svg {
+        width: 40px;
+        height: 40px;
+    }
+}

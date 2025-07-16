@@ -9,50 +9,46 @@
     align-items: center;
     justify-content: center;
     height: 100%;
-}
 
-.Main h1 {
-    color: var(--text-color, #fefefe);
-    font-family: Poppins;
-    font-size: 128px;
-    font-style: normal;
-    font-weight: 700;
-    line-height: normal;
-    opacity: 0;
-    transform: translateY(50px);
-    transition: all 1s ease-out 0.5s;
-}
+    & span {
+        color: var(--text-color, #fefefe);
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 700;
+        line-height: normal;
+        cursor: pointer;
+        transition: color 0.3s ease;
+        text-decoration: underline;
+        text-decoration-color: var(--primary-color);
 
-.Main p {
-    color: var(--text-color, #fefefe);
-    text-align: center;
-    font-family: Poppins;
-    font-size: 16px;
-    font-style: normal;
-    font-weight: 500;
-    line-height: normal;
-    opacity: 0;
-    transform: translateY(30px);
-    transition: all 1s ease-out 1s;
-}
+        &:hover {
+            color: var(--primary-color);
+        }
+    }
 
-.Main span {
-    color: var(--text-color, #fefefe);
-    font-family: Poppins;
-    font-size: 16px;
-    font-style: normal;
-    font-weight: 700;
-    line-height: normal;
-    cursor: pointer;
-    transition: color 0.3s ease;
-    text-decoration: underline;
-    text-decoration-color: var(--primary-color);
-}
+    & h1 {
+        color: var(--text-color, #fefefe);
+        font-size: 128px;
+        font-style: normal;
+        font-weight: 700;
+        line-height: normal;
+        opacity: 0;
+        transform: translateY(50px);
+        transition: all 1s ease-out 0.5s;
+    }
 
-.Main span:hover {
-    color: var(--primary-color);
+    & p {
+        color: var(--text-color, #fefefe);
+        text-align: center;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: normal;
+        opacity: 0;
+        transform: translateY(30px);
+        transition: all 1s ease-out 1s;
+    }
 }
-
 .DiveIn {
     width: 100%;
     display: flex;
@@ -67,6 +63,19 @@
     opacity: 0;
     transform: translateY(20px);
     transition: all 1s ease-out 1.5s;
+
+    & h4 {
+        color: var(--text-color, #fefefe);
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: normal;
+    }
+
+    & img {
+        animation: subtleMoveDown 1.5s infinite ease-in-out;
+        transition: bounce 0.3s ease;
+    }
 }
 
 .Hero.visible .Main h1 {
@@ -82,20 +91,6 @@
 .Hero.visible .DiveIn {
     opacity: 1;
     transform: translateY(0);
-}
-
-.DiveIn h4 {
-    color: var(--text-color, #fefefe);
-    font-family: Poppins;
-    font-size: 16px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: normal;
-}
-
-.DiveIn img {
-    animation: subtleMoveDown 1.5s infinite ease-in-out;
-    transition: bounce 0.3s ease;
 }
 
 @keyframes subtleMoveDown {
@@ -131,8 +126,20 @@
             text-align: center;
         }
 
-        & p, span {
+        & p,
+        span {
             font-size: 12px;
+        }
+    }
+
+    .DiveIn {
+        & h4 {
+            font-size: 14px;
+        }
+
+        & img {
+            width: 14px;
+            height: 14px;
         }
     }
 }

@@ -2,8 +2,11 @@ import React from "react";
 import style from "./AboutSection.module.css";
 import Overlay from "../../overlay/Overlay";
 import Carousel from "../../carousel/Carousel";
+import { useIsMobile } from "../../../hooks/useIsMobile";
+import GridItem from "../../griditems/GridItem";
 
 const AboutSection = () => {
+    const isMobile = useIsMobile();
     return (
         <section id="about" className={style.About}>
             <Overlay top={-150} left={900} right={0} bottom={0} />
@@ -19,8 +22,7 @@ const AboutSection = () => {
                 <hr />
                 <p>
                     Hi, I'm Luca Mimmo — I love building websites, designing
-                    clean interfaces, and learning new tech every day. Always
-                    working on cool side projects.
+                    clean interfaces, and learning new tech every day.
                 </p>
             </div>
             <div className={style.AboutRight}>
@@ -28,7 +30,7 @@ const AboutSection = () => {
                     <div className={style.AboutRightImage}></div>
                     <div className={style.AboutRightSkills}>
                         <h3>Skills</h3>
-                        <Carousel />
+                        {isMobile ? <GridItem /> : <Carousel />}
                     </div>
                 </div>
             </div>
