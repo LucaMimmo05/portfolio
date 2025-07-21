@@ -49,3 +49,27 @@
         }
     }
 }
+
+@media (max-width: 320px) {
+    .Contact {
+        flex-direction: column;
+        justify-content: center;
+        gap: 50px;
+
+        & .ContactTitle {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            & h1 {
+                font-size: 48px;
+
+                &::before {
+                    left: 200px;
+                    top: -25px;
+                    font-size: 54px;
+                }
+            }
+        }
+    }
+}
