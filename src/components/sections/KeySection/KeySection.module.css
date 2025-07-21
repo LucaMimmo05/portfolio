@@ -21,3 +21,14 @@
         line-height: normal;
     }
 }
+
+@media (max-width: 320px) {
+    .KeySection {
+        gap: 60px;
+        & .KeyCards {
+            gap: 40px;
+            flex-direction: column ;
+            width: auto;
+        }
+    }
+}

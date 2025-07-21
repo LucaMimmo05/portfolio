@@ -19,3 +19,14 @@
         line-height: normal;
     }
 }
+
+@media (max-width:320px) {
+    .KeyCard {
+        width: auto;
+
+         & h3 {
+            font-size: 18px;
+         }
+
+    }
+}
