@@ -55,3 +55,30 @@
         }
     }
 }
+
+@media (max-width: 320px) {
+    .Footer {
+        flex-direction: row-reverse;
+        height: auto;
+        & .FooterTop {
+            flex: unset;
+            & h3 {
+                display: none;
+            }
+            & button {
+                padding: 5px 15px;
+                width: auto;
+                height: 40px;
+                font-size: 12px;
+            }
+        }
+
+        & .FooterBottom {
+            flex: unset;
+
+            & p {
+                font-size: 13px;
+            }
+        }
+    }
+}
