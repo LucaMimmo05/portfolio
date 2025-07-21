@@ -14,19 +14,41 @@
         align-items: flex-start;
         gap: 10px;
 
-        & .ProjectTitle {
-            font-size: 30px;
-            font-style: normal;
-            font-weight: 600;
-            line-height: normal;
+        & .ProjectTop {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            align-items: center;
+            & .ProjectTitle {
+                font-size: 30px;
+                font-style: normal;
+                font-weight: 600;
+                line-height: normal;
+            }
+
+            & .Circles {
+                display: flex;
+                gap: 10px;
+
+                & .Circle {
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    border: 1px solid var(--primary-color);
+                    border-radius: 50%;
+                    width: 50px;
+                    height: 50px;
+
+                }
+            }
         }
 
         & .ProjectList {
             display: flex;
-            justify-content: space-between;
-            overflow-x: auto;
+             gap: 20px;
             width: 100%;
             scrollbar-width: none;
+            overflow-x: auto;
             -ms-overflow-style: none;
 
             &::-webkit-scrollbar {
