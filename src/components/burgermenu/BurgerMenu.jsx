@@ -1,5 +1,5 @@
 import style from "./BurgerMenu.module.css";
-import NavbarItem from "../NavbarItem/NavbarItem";
+import NavbarItem from "../navbaritem/NavbarItem";
 import { useState } from "react";
 
 const BurgerMenu = ({ onClick }) => {
@@ -16,40 +16,39 @@ const BurgerMenu = ({ onClick }) => {
 
     return (
         <div className={style.BurgerMenu}>
-        
-            {!menuVisible && <div onClick={handleClick} className={style.OpenMenu}>
-                <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="32"
-                    height="32"
-                    viewBox="0 0 40 32"
-                    fill="none"
-                >
-                    <path
-                        d="M3 28.75H37"
-                        stroke="#FEFEFE"
-                        strokeWidth="5.33333"
-                        strokeLinecap="round"
-                    />
-                    <path
-                        d="M3 16H37"
-                        stroke="#FEFEFE"
-                        strokeWidth="5.33333"
-                        strokeLinecap="round"
-                    />
-                    <path
-                        d="M3 3.25H37"
-                        stroke="#FEFEFE"
-                        strokeWidth="5.33333"
-                        strokeLinecap="round"
-                    />
-                </svg>
-            </div> }
+            {!menuVisible && (
+                <div onClick={handleClick} className={style.OpenMenu}>
+                    <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="32"
+                        height="32"
+                        viewBox="0 0 40 32"
+                        fill="none"
+                    >
+                        <path
+                            d="M3 28.75H37"
+                            stroke="#FEFEFE"
+                            strokeWidth="5.33333"
+                            strokeLinecap="round"
+                        />
+                        <path
+                            d="M3 16H37"
+                            stroke="#FEFEFE"
+                            strokeWidth="5.33333"
+                            strokeLinecap="round"
+                        />
+                        <path
+                            d="M3 3.25H37"
+                            stroke="#FEFEFE"
+                            strokeWidth="5.33333"
+                            strokeLinecap="round"
+                        />
+                    </svg>
+                </div>
+            )}
 
             <div
-                className={`${style.Menu} ${
-                    menuVisible ? style.MenuOpen : ""
-                }`}
+                className={`${style.Menu} ${menuVisible ? style.MenuOpen : ""}`}
             >
                 <svg
                     onClick={handleClick}
