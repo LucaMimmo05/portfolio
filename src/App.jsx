@@ -8,7 +8,7 @@ import KeySection from "./components/sections/KeySection/KeySection";
 import Navbar from "./components/navbar/Navbar";
 import Footer from "./components/sections/Footer/Footer";
 import { useIsMobile } from "./hooks/useIsMobile";
-import BurgerMenu from "./components/burgerMenu/BurgerMenu";
+import BurgerMenu from "./components/burgermenu/BurgerMenu";
 
 const App = () => {
     const isMobile = useIsMobile();
