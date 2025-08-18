@@ -11,9 +11,8 @@
 
     & .KeyCards {
         display: flex;
-        justify-content: space-evenly;
+        justify-content: space-between;
         width: 100%;
-        max-width: 1200px;
     }
 
     & h2 {
