@@ -30,13 +30,12 @@
 
 @media (max-width: 480px) and (min-width: 321px) {
     .KeySection {
-        gap: 50px;
         padding: 0 20px;
         min-height: 100vh;
         justify-content: center;
 
         & .KeyCards {
-            gap: 40px;
+            gap: 60px;
             flex-direction: column;
             justify-content: center;
             align-items: center;
