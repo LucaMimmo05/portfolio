@@ -82,3 +82,33 @@
         }
     }
 }
+
+
+@media (max-width: 480px) and (min-width: 321px) {
+    .Footer {
+        flex-direction: row-reverse;
+        height: auto;
+        & .FooterTop {
+            flex: unset;
+            & h3 {
+                display: none;
+            }
+            & button {
+                padding: 7px 17px;
+                width: auto;
+                height: 40px;
+                font-size: 14px;
+            }
+        }
+
+        & .FooterBottom {
+            flex: unset;
+
+            & p {
+                font-size: 15px;
+            }
+        }
+    }
+}
+
+

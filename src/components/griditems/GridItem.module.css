@@ -8,4 +8,16 @@
         width: 40px;
         height: 40px;
     }
+
+
+}
+
+@media (max-width: 480px) and (min-width:321px) {
+    .GridItem {
+
+        & svg {
+            width: 50px;
+            height: 50px;
+        }
+    }
 }

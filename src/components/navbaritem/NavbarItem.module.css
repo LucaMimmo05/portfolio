@@ -33,4 +33,8 @@
             font-size: 30px;
             
         }
+
+        @media (max-width: 480px) and (min-width: 321px) {
+            font-size: 32px;
+        }
     }

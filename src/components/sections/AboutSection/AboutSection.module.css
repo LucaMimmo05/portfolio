@@ -195,3 +195,60 @@
         }
     }
 }
+
+@media( max-width:480px) and (min-width: 321px) {
+    .About {
+        flex-direction: column;
+        gap: 40px;
+    }
+
+    .AboutLeft,
+    .AboutRight {
+        flex: unset;
+    }
+
+    .AboutLeft {
+        & h3 {
+            font-size: 28px;
+
+            &:nth-child(3) {
+                font-size: 24px;
+                font-style: normal;
+                font-weight: 400;
+                line-height: normal;
+            }
+        }
+
+        .AboutLeftText {
+            gap: 10px;
+            & .AboutLeftTitle {
+                gap: 5px;
+                & h1 {
+                    font-size: 50px;
+                }
+            }
+        }
+
+        & p {
+            font-size: 16px;
+        }
+    }
+
+    .AboutRight {
+        height: auto;
+        & .AboutRightContent {
+            & .AboutRightImage {
+                display: none;
+            }
+
+            & .AboutRightSkills {
+                align-items: center;
+                gap: 30px;
+
+                & h3 {
+                    font-size: 28px;
+                }
+            }
+        }
+    }
+}
