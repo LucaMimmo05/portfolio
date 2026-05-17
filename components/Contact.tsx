@@ -3,17 +3,29 @@ import { useState } from "react";
 import { useLang } from "@/context/LangContext";
 import AnimateIn from "@/components/AnimateIn";
 
+type Status = "idle" | "loading" | "sent" | "error";
+
 export default function Contact() {
   const { t } = useLang();
   const [form, setForm] = useState({ name: "", email: "", message: "" });
-  const [sent, setSent] = useState(false);
+  const [status, setStatus] = useState<Status>("idle");
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    const subject = encodeURIComponent(`Portfolio — ${form.name}`);
-    const body = encodeURIComponent(`From: ${form.name}\nEmail: ${form.email}\n\n${form.message}`);
-    window.location.href = `mailto:lucamimmo2005@outlook.it?subject=${subject}&body=${body}`;
-    setSent(true);
+    setStatus("loading");
+
+    const res = await fetch("/api/contact", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(form),
+    });
+
+    setStatus(res.ok ? "sent" : "error");
+  };
+
+  const reset = () => {
+    setStatus("idle");
+    setForm({ name: "", email: "", message: "" });
   };
 
   const inputClass =
@@ -41,8 +53,8 @@ export default function Contact() {
           <div className="flex flex-col items-start gap-1 pt-2">
             {[
               { label: "Email",    href: "mailto:lucamimmo2005@outlook.it", val: "lucamimmo2005@outlook.it" },
-              { label: "GitHub",   href: "https://github.com/LucaMimmo05",          val: "github.com/LucaMimmo05" },
-              { label: "LinkedIn", href: "https://www.linkedin.com/in/lucamimmo/",  val: "linkedin.com/in/lucamimmo" },
+              { label: "GitHub",   href: "https://github.com/LucaMimmo05",         val: "github.com/LucaMimmo05" },
+              { label: "LinkedIn", href: "https://www.linkedin.com/in/lucamimmo/", val: "linkedin.com/in/lucamimmo" },
             ].map((s) => (
               <a
                 key={s.label}
@@ -60,7 +72,7 @@ export default function Contact() {
 
         {/* Right: form */}
         <AnimateIn delay={140}>
-          {sent ? (
+          {status === "sent" ? (
             <div className="flex flex-col items-start gap-4 py-8">
               <div className="w-10 h-10 rounded-full border border-[#38bdf8]/30 bg-[#38bdf8]/8 flex items-center justify-center">
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#38bdf8" strokeWidth="2">
@@ -69,7 +81,7 @@ export default function Contact() {
               </div>
               <p className="text-lg font-medium text-white/80">{t.contact.sent}</p>
               <button
-                onClick={() => { setSent(false); setForm({ name: "", email: "", message: "" }); }}
+                onClick={reset}
                 className="text-sm text-white/30 hover:text-white/60 transition-colors duration-200 mt-2"
               >
                 ← {t.contact.label === "Get in touch" ? "Send another" : "Invia un altro"}
@@ -84,6 +96,7 @@ export default function Contact() {
                 value={form.name}
                 onChange={(e) => setForm({ ...form, name: e.target.value })}
                 className={inputClass}
+                disabled={status === "loading"}
               />
               <input
                 required
@@ -92,6 +105,7 @@ export default function Contact() {
                 value={form.email}
                 onChange={(e) => setForm({ ...form, email: e.target.value })}
                 className={inputClass}
+                disabled={status === "loading"}
               />
               <textarea
                 required
@@ -100,12 +114,23 @@ export default function Contact() {
                 value={form.message}
                 onChange={(e) => setForm({ ...form, message: e.target.value })}
                 className={`${inputClass} resize-none`}
+                disabled={status === "loading"}
               />
+
+              {status === "error" && (
+                <p className="text-xs text-red-400/70">
+                  {t.contact.label === "Get in touch"
+                    ? "Something went wrong. Try again or email me directly."
+                    : "Qualcosa è andato storto. Riprova o scrivimi direttamente."}
+                </p>
+              )}
+
               <button
                 type="submit"
-                className="mt-6 self-start px-6 py-3 text-sm font-medium rounded-full bg-[#38bdf8] text-black hover:bg-[#7dd3fc] transition-colors duration-200"
+                disabled={status === "loading"}
+                className="mt-6 self-start px-6 py-3 text-sm font-medium rounded-full bg-[#38bdf8] text-black hover:bg-[#7dd3fc] transition-colors duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
               >
-                {t.contact.send}
+                {status === "loading" ? t.contact.sending : t.contact.send}
               </button>
             </form>
           )}

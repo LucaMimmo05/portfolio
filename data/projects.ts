@@ -54,7 +54,7 @@ export const projects: Project[] = [
     num: "02",
     title: "Pokémon App",
     status: "Completed",
-    year: "2024",
+    year: "2025",
     shortDesc: "Interactive Pokédex web application.",
     overview:
       "An interactive Pokédex built with Angular and TypeScript, powered by the PokéAPI. The app lets users browse the complete Pokémon database, search by name or ID in real time, filter by type, and dive into detailed stats for each Pokémon. A clean, fast interface designed to make exploring data enjoyable.",
