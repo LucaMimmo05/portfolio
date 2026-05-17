@@ -41,8 +41,8 @@ export default function Contact() {
           <div className="flex flex-col items-start gap-1 pt-2">
             {[
               { label: "Email",    href: "mailto:lucamimmo2005@outlook.it", val: "lucamimmo2005@outlook.it" },
-              { label: "GitHub",   href: "https://github.com/lucamimmo",           val: "github.com/lucamimmo" },
-              { label: "LinkedIn", href: "https://www.linkedin.com/in/luca-mimmo", val: "linkedin.com/in/luca-mimmo" },
+              { label: "GitHub",   href: "https://github.com/LucaMimmo05",          val: "github.com/LucaMimmo05" },
+              { label: "LinkedIn", href: "https://www.linkedin.com/in/lucamimmo/",  val: "linkedin.com/in/lucamimmo" },
             ].map((s) => (
               <a
                 key={s.label}

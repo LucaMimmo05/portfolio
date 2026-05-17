@@ -103,8 +103,8 @@ export default function Navbar() {
           style={{ transitionDelay: open ? "330ms" : "0ms" }}
         >
           {[
-            { label: "GitHub",   href: "https://github.com/lucamimmo" },
-            { label: "LinkedIn", href: "https://www.linkedin.com/in/luca-mimmo" },
+            { label: "GitHub",   href: "https://github.com/LucaMimmo05" },
+            { label: "LinkedIn", href: "https://www.linkedin.com/in/lucamimmo/" },
             { label: "Email",    href: "mailto:lucamimmo2005@outlook.it" },
           ].map((s) => (
             <a
