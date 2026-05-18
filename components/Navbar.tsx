@@ -90,7 +90,7 @@ export default function Navbar() {
               <span className="text-xs font-mono text-[#38bdf8]/40 w-6 shrink-0">{link.num}</span>
               <span
                 className="font-semibold tracking-tight text-white/50 group-hover:text-white transition-colors duration-200 leading-none"
-                style={{ fontSize: "clamp(2.8rem, 8vw, 7rem)" }}
+                style={{ fontSize: "clamp(2rem, 8vw, 7rem)" }}
               >
                 {link.label}
               </span>
