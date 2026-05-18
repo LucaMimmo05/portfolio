@@ -25,6 +25,7 @@ export const projects: Project[] = [
     links: [
       { label: "GitHub FE", href: "https://github.com/LucaMimmo05/devhub-fe" },
       { label: "GitHub BE", href: "https://github.com/LucaMimmo05/devhub-be" },
+      { label: "Live", href: "https://devhub-fe.vercel.app/" },
     ],
     highlights: [
       {
@@ -92,11 +93,13 @@ export const projects: Project[] = [
     title: "Newmann",
     status: "Active",
     year: "2026",
-    shortDesc: "Founding Engineer — full-stack SaaS product.",
+    shortDesc: "Founding Engineer — full-stack B2B SaaS product.",
     overview:
-      "Newmann is the product I'm helping build as a Founding Software Developer. I'm responsible for the full technical stack: Next.js frontend with REST API integration and OAuth2 authentication, backend architecture, JWT-based security, and integration with AI services and external cloud providers. Working fully remote from Italy.",
+      "Newmann is a B2B SaaS platform currently in development. As Founding Software Developer, I'm responsible for the full technical stack: Next.js frontend with REST API integration and OAuth2 authentication, backend architecture, JWT-based security, and integration with AI services and external cloud providers. Working fully remote from Italy.",
     tags: ["Next.js", "Java", "Spring Boot", "JWT", "OAuth2", "AI Services", "Cloud"],
-    links: [],
+    links: [
+      { label: "Website", href: "https://newmann.ai" },
+    ],
     highlights: [
       {
         label: "Frontend architecture",
