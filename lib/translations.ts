@@ -116,21 +116,21 @@ export const translations = {
     },
     about: {
       label: "Chi sono",
-      h1: "Dev junior.", h2: "Serio nel suo lavoro.",
+      h1: "Dev junior.", h2: "Serio nel lavoro.",
       p1: "Sono Luca Mimmo, uno sviluppatore web junior che costruisce app con React sul frontend e Java/Quarkus sul backend. Sto ancora imparando, ma prendo i miei progetti sul serio e mi curo di scrivere codice pulito e manutenibile.",
       p2: "Quando qualcosa non funziona, ci rimango sopra finché non lo risolvo.",
       facts: [
         { label: "Frontend",   value: "React & Angular" },
         { label: "Backend",    value: "Java & Spring Boot" },
         { label: "Database",   value: "SQL & NoSQL" },
-        { label: "Attualmente", value: "Building Newmann" },
+        { label: "Attualmente", value: "Sto costruendo Newmann" },
       ],
     },
-    work: { label: "Lavori Selezionati" },
+    work: { label: "Progetti Selezionati" },
     projects: {
       devhub: {
         status: "In Sviluppo",
-        desc: "Dashboard full-stack per developer — progetti, task, note markdown, snippet CLI, command palette. React 19 + Vite, Quarkus REST API, PostgreSQL, Redis.",
+        desc: "Dashboard full-stack per sviluppatori — progetti, task, note markdown, snippet CLI, command palette. React 19 + Vite, Quarkus REST API, PostgreSQL, Redis.",
       },
       pokemon: {
         status: "Completato",
@@ -143,7 +143,7 @@ export const translations = {
     },
     experience: {
       label: "Esperienza",
-      founding: "Progetto Fondato",
+      founding: "Progetto Fondativo",
       current: "In corso",
       education: "Formazione",
       roles: [
@@ -197,10 +197,10 @@ export const translations = {
       label: "Contattami",
       name: "Il tuo nome", email: "tua@email.com",
       message: "Raccontami del tuo progetto...",
-      send: "Invia messaggio", sending: "Invio...", sent: "Messaggio inviato!",
+      send: "Invia messaggio", sending: "Invio in corso...", sent: "Messaggio inviato!",
     },
     footer: {
-      tagline: "Sviluppatore web junior che costruisce app pulite e performanti. React, Java e tutto il resto.",
+      tagline: "Sviluppatore web junior che costruisce app pulite e performanti. React, Java e non solo.",
       open: "Aperto a nuove opportunità",
       copy: "© 2026 Luca Mimmo. Tutti i diritti riservati.",
       built: "Creato con Next.js & Tailwind CSS",
