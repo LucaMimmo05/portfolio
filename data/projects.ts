@@ -94,7 +94,7 @@ export const projects: Project[] = [
     year: "2026",
     shortDesc: "Founding Engineer — full-stack SaaS product.",
     overview:
-      "Newmann is the product I'm helping build as a Founding Software Engineer. I'm responsible for the full technical stack: Next.js frontend with REST API integration and OAuth2 authentication, backend architecture, JWT-based security, and integration with AI services and external cloud providers. Working fully remote from Italy.",
+      "Newmann is the product I'm helping build as a Founding Software Developer. I'm responsible for the full technical stack: Next.js frontend with REST API integration and OAuth2 authentication, backend architecture, JWT-based security, and integration with AI services and external cloud providers. Working fully remote from Italy.",
     tags: ["Next.js", "Java", "Spring Boot", "JWT", "OAuth2", "AI Services", "Cloud"],
     links: [],
     highlights: [

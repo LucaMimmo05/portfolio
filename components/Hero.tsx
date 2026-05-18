@@ -15,10 +15,10 @@ export default function Hero() {
       </div>
 
       <div className="relative z-10 flex flex-col my-auto py-16">
-        <h1 className="anim-fade-up font-semibold leading-[0.88] tracking-[-0.03em] text-outline select-none" style={{ fontSize: "clamp(4rem, 14.5vw, 13rem)", animationDelay: "0.18s" }}>
+        <h1 className="anim-fade-up font-semibold leading-[0.88] tracking-[-0.03em] text-outline select-none" style={{ fontSize: "clamp(1rem, 13vw, 13rem)", animationDelay: "0.18s" }}>
           {t.hero.line1}
         </h1>
-        <h1 className="anim-fade-up font-semibold leading-[0.88] tracking-[-0.03em] select-none" style={{ fontSize: "clamp(4rem, 14.5vw, 13rem)", animationDelay: "0.3s", background: "linear-gradient(95deg, #38bdf8 0%, #7dd3fc 50%, #bae6fd 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>
+        <h1 className="anim-fade-up font-semibold leading-[0.88] tracking-[-0.03em] select-none" style={{ fontSize: "clamp(1rem, 13vw, 13rem)", animationDelay: "0.3s", background: "linear-gradient(95deg, #38bdf8 0%, #7dd3fc 50%, #bae6fd 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>
           {t.hero.line2}
         </h1>
       </div>
