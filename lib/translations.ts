@@ -1,11 +1,11 @@
 export const translations = {
   en: {
     seo: {
-      title: "Luca Mimmo | Full-Stack Web Developer (React, Next.js, Java)",
-      description: "Luca Mimmo is a full-stack web developer from Italy building fast, clean web apps with React, Next.js, TypeScript, Java and Spring Boot. Founding engineer at Newmann. Open to work.",
-      jobTitle: "Full-Stack Web Developer",
+      title: "Luca Mimmo | Full-Stack Web Developer Portfolio",
+      description: "Portfolio of Luca Mimmo, full-stack web developer: React, Next.js, TypeScript, Java, Spring Boot and PostgreSQL. Web apps, REST APIs and software projects.",
+      personDescription: "Italian full-stack web developer specialised in React, Next.js, Java and Spring Boot.",
+      disambiguatingDescription: "Software developer from Gallarate, Italy, building web applications; founding developer at Newmann.",
       projectSuffix: "Project by Luca Mimmo",
-      notFound: "Page not found",
       home: "Home",
     },
     nav: {
@@ -13,7 +13,7 @@ export const translations = {
       menu: "Menu", close: "Close", switchLang: "Leggi in italiano",
     },
     hero: {
-      role: "Full-Stack Developer",
+      role: "Full-Stack Web Developer",
       line1: "SOFTWARE", line2: "DEVELOPER.",
       bio: "Full-stack developer working with React and Java. I build real products, from the API to the last pixel.",
       cta: "See my work", email: "Email me", open: "Open to work",
@@ -110,9 +110,6 @@ export const translations = {
     projectPage: {
       back: "Back",
       overview: "Overview",
-      year: "Year",
-      status: "Status",
-      stack: "Stack",
       highlights: "Highlights",
       nextProject: "Next project",
       context: "Context",
@@ -205,6 +202,7 @@ export const translations = {
       h1: "Let's build", h2: "something together.",
       another: "Send another",
       error: "The message didn't go through. Try again, or email me directly.",
+      limited: "You've sent a few messages already. Try again in a few minutes, or email me directly.",
     },
     footer: {
       tagline: "Full-stack developer building fast, well-made web apps with React and Java.",
@@ -216,11 +214,11 @@ export const translations = {
 
   it: {
     seo: {
-      title: "Luca Mimmo | Sviluppatore Web Full-Stack (React, Next.js, Java)",
-      description: "Luca Mimmo è uno sviluppatore web full-stack italiano: crea web app veloci e curate con React, Next.js, TypeScript, Java e Spring Boot. Founding engineer in Newmann. Disponibile per nuove opportunità.",
-      jobTitle: "Sviluppatore Web Full-Stack",
+      title: "Luca Mimmo | Full-Stack Web Developer Portfolio",
+      description: "Portfolio di Luca Mimmo, sviluppatore web full-stack: React, Next.js, TypeScript, Java, Spring Boot e PostgreSQL. Web app, API REST e progetti software.",
+      personDescription: "Sviluppatore web full-stack italiano specializzato in React, Next.js, Java e Spring Boot.",
+      disambiguatingDescription: "Sviluppatore software di Gallarate che realizza applicazioni web; founding developer in Newmann.",
       projectSuffix: "Progetto di Luca Mimmo",
-      notFound: "Pagina non trovata",
       home: "Home",
     },
     nav: {
@@ -228,7 +226,7 @@ export const translations = {
       menu: "Menu", close: "Chiudi", switchLang: "Read in English",
     },
     hero: {
-      role: "Sviluppatore Full-Stack",
+      role: "Sviluppatore Web Full-Stack",
       line1: "SOFTWARE", line2: "DEVELOPER.",
       bio: "Sviluppatore full-stack con React e Java. Costruisco prodotti veri, dall'API all'ultimo pixel.",
       cta: "Guarda i progetti", email: "Scrivimi", open: "Disponibile",
@@ -325,9 +323,6 @@ export const translations = {
     projectPage: {
       back: "Indietro",
       overview: "Panoramica",
-      year: "Anno",
-      status: "Stato",
-      stack: "Stack",
       highlights: "In evidenza",
       nextProject: "Progetto successivo",
       context: "Contesto",
@@ -420,6 +415,7 @@ export const translations = {
       h1: "Costruiamo", h2: "qualcosa insieme.",
       another: "Invia un altro messaggio",
       error: "Il messaggio non è partito. Riprova, oppure scrivimi direttamente.",
+      limited: "Hai già inviato diversi messaggi. Riprova tra qualche minuto, oppure scrivimi direttamente.",
     },
     footer: {
       tagline: "Sviluppatore full-stack che costruisce web app veloci e curate con React e Java.",

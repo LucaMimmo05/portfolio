@@ -34,7 +34,11 @@ export default function Hero() {
         />
 
         <div className="anim-fade relative z-10 flex flex-wrap items-center justify-between gap-4" style={{ animationDelay: "0.1s" }}>
-          <Pill>Luca Mimmo · {t.hero.role}</Pill>
+          {/* The only h1 is the name; the role follows it so search engines read "Luca Mimmo" as a developer */}
+          <Pill as="div">
+            <h1>Luca Mimmo</h1>
+            <p className="before:content-['·'] before:mr-2">{t.hero.role}</p>
+          </Pill>
           <span className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.04] px-3 py-1 text-xs text-white/70">
             <span className="relative flex w-2 h-2">
               <span className="absolute inset-0 rounded-full bg-[#38bdf8] animate-ping opacity-60" />
@@ -44,8 +48,7 @@ export default function Hero() {
           </span>
         </div>
 
-        <h1 className="float-slow relative z-10 my-16 font-semibold leading-[0.88] tracking-[-0.04em] select-none text-center">
-          <span className="sr-only">Luca Mimmo, </span>
+        <p className="float-slow relative z-10 my-16 font-semibold leading-[0.88] tracking-[-0.04em] select-none text-center">
           <span className="anim-fade-up block text-outline" style={{ ...display, animationDelay: "0.18s" }}>
             {t.hero.line1}
           </span>
@@ -62,7 +65,7 @@ export default function Hero() {
           >
             {t.hero.line2}
           </span>
-        </h1>
+        </p>
 
         <div className="anim-fade-up relative z-10 flex flex-col md:flex-row md:items-end justify-between gap-8" style={{ animationDelay: "0.48s" }}>
           <p className="max-w-sm 2xl:max-w-md text-base 2xl:text-lg text-white/60 leading-relaxed [text-wrap:pretty]">{t.hero.bio}</p>

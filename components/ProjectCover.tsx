@@ -75,8 +75,8 @@ export default function ProjectCover({ projectKey, title, lang = "it" }: { proje
 
   // Newmann's design system: light #f7f7f7 surfaces, teal #229799, Quicksand
   const copy = lang === "en"
-    ? { a: "Reply to your emails in", b: "half the time", chips: ["Read only", "To reply", "GitHub"] }
-    : { a: "Rispondi alle email nella", b: "metà del tempo", chips: ["Solo lettura", "Da rispondere", "GitHub"] };
+    ? { a: "Reply to your emails in", b: "half the time", chips: ["Read only", "To reply"] }
+    : { a: "Rispondi alle email nella", b: "metà del tempo", chips: ["Solo lettura", "Da rispondere"] };
   return (
     <div className={`${base} ${quicksand.className}`} style={{ background: "radial-gradient(70% 90% at 100% 0%, rgba(34,151,153,0.16), transparent 60%), #f7f7f7" }}>
       {/* Big faint octopus, like the shapes behind newmann.ai's hero */}

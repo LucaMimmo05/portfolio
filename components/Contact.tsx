@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useLang } from "@/context/LangContext";
 import AnimateIn from "@/components/AnimateIn";
 import { Pill, stageBg } from "@/components/ui";
@@ -7,12 +7,16 @@ import { RevealWords } from "@/components/motion";
 import CvDownload from "@/components/CvDownload";
 import { site } from "@/lib/site";
 
-type Status = "idle" | "loading" | "sent" | "error";
+type Status = "idle" | "loading" | "sent" | "error" | "limited";
 
 export default function Contact() {
   const { t } = useLang();
   const [form, setForm] = useState({ name: "", email: "", message: "" });
   const [status, setStatus] = useState<Status>("idle");
+  // Anti-spam: when the form appeared (bots post instantly) and a honeypot humans never see
+  const startedAt = useRef(0);
+  const [website, setWebsite] = useState("");
+  useEffect(() => { startedAt.current = Date.now(); }, []);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -22,9 +26,9 @@ export default function Contact() {
       const res = await fetch("/api/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(form),
+        body: JSON.stringify({ ...form, website, startedAt: startedAt.current }),
       });
-      setStatus(res.ok ? "sent" : "error");
+      setStatus(res.ok ? "sent" : res.status === 429 ? "limited" : "error");
     } catch {
       setStatus("error");
     }
@@ -33,6 +37,7 @@ export default function Contact() {
   const reset = () => {
     setStatus("idle");
     setForm({ name: "", email: "", message: "" });
+    startedAt.current = Date.now();
   };
 
   const inputClass =
@@ -95,7 +100,14 @@ export default function Contact() {
               </button>
             </div>
           ) : (
-            <form onSubmit={handleSubmit} className="flex flex-col gap-3 lg:pt-16">
+            <form onSubmit={handleSubmit} className="relative flex flex-col gap-3 lg:pt-16">
+              {/* Honeypot: hidden from people and screen readers, bots tend to fill it */}
+              <div aria-hidden="true" className="absolute -left-[9999px] w-px h-px overflow-hidden">
+                <label>
+                  Website
+                  <input type="text" name="website" tabIndex={-1} autoComplete="off" value={website} onChange={(e) => setWebsite(e.target.value)} />
+                </label>
+              </div>
               <input
                 required
                 type="text"
@@ -103,6 +115,7 @@ export default function Contact() {
                 aria-label={t.contact.name}
                 name="name"
                 autoComplete="name"
+                maxLength={100}
                 value={form.name}
                 onChange={(e) => setForm({ ...form, name: e.target.value })}
                 className={inputClass}
@@ -115,6 +128,7 @@ export default function Contact() {
                 aria-label={t.contact.email}
                 name="email"
                 autoComplete="email"
+                maxLength={254}
                 value={form.email}
                 onChange={(e) => setForm({ ...form, email: e.target.value })}
                 className={inputClass}
@@ -126,12 +140,17 @@ export default function Contact() {
                 placeholder={t.contact.message}
                 aria-label={t.contact.message}
                 name="message"
+                minLength={10}
+                maxLength={5000}
                 value={form.message}
                 onChange={(e) => setForm({ ...form, message: e.target.value })}
                 className={`${inputClass} resize-none`}
                 disabled={status === "loading"}
               />
 
+              {status === "limited" && (
+                <p role="alert" className="text-sm text-amber-200/90">{t.contact.limited}</p>
+              )}
               {status === "error" && (
                 <p role="alert" className="text-sm text-red-300/90">
                   {t.contact.error}

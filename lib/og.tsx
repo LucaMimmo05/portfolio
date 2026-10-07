@@ -1,3 +1,5 @@
+// OG images are rendered by Satori, which only understands plain <img>; next/image does not apply here.
+/* eslint-disable @next/next/no-img-element */
 import { readFile } from "node:fs/promises";
 import { join } from "node:path";
 import { ImageResponse } from "next/og";
@@ -68,50 +70,104 @@ export async function renderHomeOg({ role, open }: { role: string; open: string 
   );
 }
 
-/** Mirrors the project page header: index, big title, status/year, stack line. */
-export async function renderProjectOg({
-  num, title, status, year, desc, tags, path,
-}: {
-  num: string;
-  title: string;
-  status: string;
-  year: string;
-  desc: string;
-  tags: readonly string[];
+const dataUri = async (file: string, mime: string) =>
+  `data:${mime};base64,${(await readFile(join(process.cwd(), "assets/og", file))).toString("base64")}`;
+
+/**
+ * Share image for a case study: the project's own brand cover (same idea as the home cards),
+ * with a slim strip at the bottom saying whose project it is and where to read it.
+ */
+export async function renderCaseStudyOg({ projectKey, lang, label, path }: {
+  projectKey: "devhub" | "pokemon" | "newmann";
+  lang: "it" | "en";
+  label: string;
   path: string;
 }) {
+  const light = projectKey === "newmann";
+  const strip = (
+    <div
+      style={{
+        position: "absolute", left: 0, right: 0, bottom: 0, height: 74, display: "flex", alignItems: "center", justifyContent: "space-between",
+        padding: "0 56px", fontSize: 22,
+        background: light ? "rgba(255,255,255,0.75)" : "rgba(0,0,0,0.35)",
+        borderTop: light ? "1px solid rgba(0,0,0,0.06)" : "1px solid rgba(255,255,255,0.08)",
+        color: light ? "#1f2933" : "rgba(255,255,255,0.85)",
+      }}
+    >
+      <span style={{ fontWeight: 600 }}>{label}</span>
+      <span style={{ fontFamily: "Geist Mono", opacity: 0.8 }}>{path}</span>
+    </div>
+  );
+
+  let body;
+  if (projectKey === "devhub") {
+    const logo = await dataUri("devhub-logo.svg", "image/svg+xml");
+    const stats = [
+      ["3", "Projects", "#3B82F6"],
+      ["5", "Open Tasks", "#F59E0B"],
+      ["2", "Notes", "#22C55E"],
+      ["4", "Commands", "#A855F7"],
+    ];
+    body = (
+      <div style={{ width: "100%", height: "100%", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", gap: 56, background: "#121924", paddingBottom: 74 }}>
+        <img src={logo} width={620} height={124} alt="" />
+        <div style={{ display: "flex", borderRadius: 16, border: "1px solid rgba(255,255,255,0.08)", background: "#171f2b" }}>
+          {stats.map(([n, l, c], i) => (
+            <div key={l} style={{ display: "flex", alignItems: "center", gap: 12, padding: "16px 26px", fontSize: 24, color: "#cbd5e1", borderLeft: i ? "1px solid rgba(255,255,255,0.08)" : "none" }}>
+              <div style={{ width: 12, height: 12, borderRadius: 12, background: c }} />
+              <span style={{ fontWeight: 600, color: "#fff" }}>{n}</span>
+              <span>{l}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+    );
+  } else if (projectKey === "pokemon") {
+    const [ball, ...types] = await Promise.all([
+      dataUri("pokeball.png", "image/png"),
+      dataUri("Fire.svg", "image/svg+xml"),
+      dataUri("Water.svg", "image/svg+xml"),
+      dataUri("Grass.svg", "image/svg+xml"),
+      dataUri("Electric.svg", "image/svg+xml"),
+    ]);
+    const spots = [
+      { left: 90, top: 70, size: 96 },
+      { left: 1010, top: 60, size: 84 },
+      { left: 140, top: 400, size: 80 },
+      { left: 980, top: 390, size: 72 },
+    ];
+    body = (
+      <div style={{ width: "100%", height: "100%", display: "flex", alignItems: "center", justifyContent: "center", gap: 48, paddingBottom: 74, backgroundImage: "radial-gradient(circle at 50% 40%, #5a82d6, #3f63b8 60%, #2f4e98)" }}>
+        {types.map((src, i) => (
+          <img key={i} src={src} width={spots[i].size} height={spots[i].size} alt="" style={{ position: "absolute", left: spots[i].left, top: spots[i].top, opacity: 0.3 }} />
+        ))}
+        <img src={ball} width={300} height={300} alt="" />
+        <div style={{ display: "flex", flexDirection: "column" }}>
+          <span style={{ fontSize: 136, fontWeight: 600, letterSpacing: -5, color: "#fff", lineHeight: 1 }}>Pokezone</span>
+          <span style={{ marginTop: 14, fontSize: 30, color: "rgba(255,255,255,0.8)" }}>Angular · PokéAPI</span>
+        </div>
+      </div>
+    );
+  } else {
+    const [wordmark, octopus] = await Promise.all([dataUri("newmann-wordmark.png", "image/png"), dataUri("newmann-octopus.png", "image/png")]);
+    const copy = lang === "en" ? ["Reply to your emails in", "half the time"] : ["Rispondi alle email nella", "metà del tempo"];
+    body = (
+      <div style={{ width: "100%", height: "100%", display: "flex", flexDirection: "column", justifyContent: "space-between", padding: "64px 72px 138px", backgroundImage: "radial-gradient(circle at 100% 0%, rgba(34,151,153,0.22), rgba(247,247,247,0) 55%)", backgroundColor: "#f7f7f7" }}>
+        <img src={octopus} width={520} height={474} alt="" style={{ position: "absolute", right: -60, bottom: -40, opacity: 0.08 }} />
+        <img src={wordmark} width={420} height={100} alt="" />
+        <div style={{ display: "flex", flexDirection: "column", fontSize: 76, fontWeight: 600, letterSpacing: -2, lineHeight: 1.05, color: "#2b2f33" }}>
+          <span>{copy[0]}</span>
+          <span style={{ color: "#229799" }}>{copy[1]}</span>
+        </div>
+      </div>
+    );
+  }
+
   return new ImageResponse(
     (
-      <div style={frame}>
-        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", fontSize: 22 }}>
-          <span style={{ color: "rgba(255,255,255,0.6)", fontWeight: 600 }}>Luca Mimmo</span>
-          <span style={{ fontFamily: "Geist Mono", color: "rgba(56,189,248,0.6)" }}>{num}</span>
-        </div>
-
-        <div style={{ display: "flex", flexDirection: "column", gap: 28 }}>
-          <span style={{ fontSize: 144, fontWeight: 600, letterSpacing: -5, lineHeight: 0.92 }}>{title}</span>
-          <div style={{ display: "flex", alignItems: "center", gap: 16, fontSize: 20 }}>
-            <span style={{ padding: "6px 16px", borderRadius: 999, border: "1px solid rgba(255,255,255,0.14)", color: "rgba(255,255,255,0.55)" }}>
-              {status}
-            </span>
-            <span style={{ color: "rgba(255,255,255,0.35)" }}>{year}</span>
-          </div>
-          <span style={{ fontSize: 26, lineHeight: 1.45, color: "rgba(255,255,255,0.45)", maxWidth: 940 }}>{desc}</span>
-        </div>
-
-        <div
-          style={{
-            display: "flex",
-            justifyContent: "space-between",
-            alignItems: "center",
-            paddingTop: 24,
-            borderTop: "1px solid rgba(255,255,255,0.08)",
-            fontSize: 20,
-          }}
-        >
-          <span style={{ color: "rgba(255,255,255,0.4)" }}>{tags.slice(0, 5).join("  ·  ")}</span>
-          <span style={{ fontFamily: "Geist Mono", color: "rgba(255,255,255,0.6)" }}>{path}</span>
-        </div>
+      <div style={{ ...frame, padding: 0, position: "relative" }}>
+        {body}
+        {strip}
       </div>
     ),
     { ...ogSize, fonts: await fonts() },

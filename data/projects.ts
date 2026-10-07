@@ -34,12 +34,12 @@ export const projects: Project[] = [
       { src: "/work/newmann/app-labels-v2.webp", width: 4320, height: 2700 },
       { src: "/work/newmann/app-assistant-v3.webp", width: 3300, height: 2064 },
       { src: "/work/newmann/app-rule-v3.webp", width: 3360, height: 2100 },
-      { src: "/work/newmann/app-drafts-v3.webp", width: 3552, height: 2220 },
+      { src: "/work/newmann/app-drafts-v7.webp", width: 3552, height: 2220 },
     ],
     devices: {
-      desktop: { src: "/work/newmann/home.webp", width: 4320, height: 2700 },
-      tablet: { src: "/work/newmann/tablet.webp", width: 2304, height: 3072 },
-      mobile: { src: "/work/newmann/mobile.webp", width: 1170, height: 2532 },
+      desktop: { src: "/work/newmann/app-dashboard-v2.webp", width: 4320, height: 2700 },
+      tablet: { src: "/work/newmann/app-dash-tablet-v2.webp", width: 2304, height: 3072 },
+      mobile: { src: "/work/newmann/app-dash-mobile.webp", width: 1170, height: 2532 },
     },
   },
   {

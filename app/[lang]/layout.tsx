@@ -5,6 +5,7 @@ import { Analytics } from "@vercel/analytics/next";
 import { LangProvider } from "@/context/LangContext";
 import { ScrollProgress } from "@/components/motion";
 import { translations } from "@/lib/translations";
+import { JsonLd, personJsonLd } from "@/lib/jsonld";
 import { alternatesFor, hasLocale, localePath, locales, ogLocale, site, siteUrl } from "@/lib/site";
 import "../globals.css";
 
@@ -74,6 +75,7 @@ export default async function RootLayout({ children, params }: LayoutProps<"/[la
   return (
     <html lang={lang} className={geist.variable}>
       <body className="min-h-screen bg-[#080808] text-white antialiased">
+        <JsonLd data={personJsonLd(lang)} />
         <ScrollProgress />
         <LangProvider lang={lang}>{children}</LangProvider>
         <Analytics />

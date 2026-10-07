@@ -14,9 +14,9 @@ export function JsonLd({ data }: { data: object }) {
 const personId = `${siteUrl}/#person`;
 const websiteId = `${siteUrl}/#website`;
 
-export function homeJsonLd(lang: Lang) {
+/** Person + WebSite, emitted on every page from the root layout so the entity is always tied to software development. */
+export function personJsonLd(lang: Lang) {
   const t = translations[lang];
-  const url = absoluteUrl(localePath(lang));
 
   return {
     "@context": "https://schema.org",
@@ -29,8 +29,9 @@ export function homeJsonLd(lang: Lang) {
         familyName: "Mimmo",
         url: siteUrl,
         email: `mailto:${site.email}`,
-        jobTitle: t.seo.jobTitle,
-        description: t.seo.description,
+        jobTitle: "Full-Stack Web Developer",
+        description: t.seo.personDescription,
+        disambiguatingDescription: t.seo.disambiguatingDescription,
         nationality: { "@type": "Country", name: "Italy" },
         address: { "@type": "PostalAddress", addressCountry: "IT" },
         worksFor: { "@type": "Organization", name: "Newmann", url: "https://newmann.ai" },
@@ -55,16 +56,23 @@ export function homeJsonLd(lang: Lang) {
         inLanguage: ["en", "it"],
         publisher: { "@id": personId },
       },
-      {
-        "@type": "ProfilePage",
-        "@id": `${url}#profile`,
-        url,
-        name: t.seo.title,
-        inLanguage: lang,
-        isPartOf: { "@id": websiteId },
-        mainEntity: { "@id": personId },
-      },
     ],
+  };
+}
+
+export function homeJsonLd(lang: Lang) {
+  const t = translations[lang];
+  const url = absoluteUrl(localePath(lang));
+
+  return {
+    "@context": "https://schema.org",
+    "@type": "ProfilePage",
+    "@id": `${url}#profile`,
+    url,
+    name: t.seo.title,
+    inLanguage: lang,
+    isPartOf: { "@id": websiteId },
+    mainEntity: { "@id": personId },
   };
 }
 

@@ -25,12 +25,12 @@ export const icons = [
 export const label = "text-[11px] tracking-[0.2em] uppercase text-white/40";
 
 /** Small rounded label that opens each section. */
-export function Pill({ children }: { children: React.ReactNode }) {
+export function Pill({ children, as: Tag = "span" }: { children: React.ReactNode; as?: "span" | "div" }) {
   return (
-    <span className="inline-flex items-center gap-2 rounded-full border border-[#38bdf8]/20 bg-[#38bdf8]/[0.07] px-3 py-1 text-[11px] font-medium tracking-[0.14em] uppercase text-[#7dd3fc]">
+    <Tag className="inline-flex items-center gap-2 rounded-full border border-[#38bdf8]/20 bg-[#38bdf8]/[0.07] px-3 py-1 text-[11px] font-medium tracking-[0.14em] uppercase text-[#7dd3fc]">
       <span className="w-1 h-1 rounded-full bg-[#38bdf8]" aria-hidden="true" />
       {children}
-    </span>
+    </Tag>
   );
 }
 
