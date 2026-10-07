@@ -9,5 +9,5 @@ export const alt = "Luca Mimmo — Software Developer";
 export default async function Image({ params }: { params: Promise<{ lang: string }> }) {
   const { lang } = await params;
   const t = translations[hasLocale(lang) ? lang : "it"];
-  return renderHomeOg({ role: t.hero.role, bio: t.hero.bio, open: t.hero.open });
+  return renderHomeOg({ role: t.hero.role, open: t.hero.open });
 }

@@ -32,21 +32,21 @@ const frame = {
   fontFamily: "Geist",
 };
 
-/** Mirrors the site hero: outlined SOFTWARE, gradient DEVELOPER. */
-export async function renderHomeOg({ role, bio, open }: { role: string; bio: string; open: string }) {
+/** Mirrors the site hero: outlined SOFTWARE, gradient DEVELOPER. Kept sparse so it reads as a thumbnail. */
+export async function renderHomeOg({ role, open }: { role: string; open: string }) {
   return new ImageResponse(
     (
       <div style={frame}>
-        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", fontSize: 22 }}>
-          <span style={{ color: "rgba(255,255,255,0.6)", fontWeight: 600 }}>Luca Mimmo</span>
-          <span style={{ display: "flex", alignItems: "center", gap: 10, color: "rgba(56,189,248,0.75)" }}>
-            <span style={{ width: 8, height: 8, borderRadius: 8, background: accent }} />
+        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+          <span style={{ fontSize: 40, fontWeight: 600, letterSpacing: -1, color: "rgba(255,255,255,0.9)" }}>Luca Mimmo</span>
+          <span style={{ display: "flex", alignItems: "center", gap: 12, fontSize: 28, color: accent }}>
+            <span style={{ width: 12, height: 12, borderRadius: 12, background: accent }} />
             {open}
           </span>
         </div>
 
-        <div style={{ display: "flex", flexDirection: "column", fontWeight: 600, fontSize: 168, lineHeight: 0.88, letterSpacing: -6 }}>
-          <span style={{ color: "#080808", WebkitTextStroke: "2px rgba(56,189,248,0.5)" }}>SOFTWARE</span>
+        <div style={{ display: "flex", flexDirection: "column", fontWeight: 600, fontSize: 176, lineHeight: 0.9, letterSpacing: -6 }}>
+          <span style={{ color: "#080808", WebkitTextStroke: "4px rgba(56,189,248,0.85)" }}>SOFTWARE</span>
           <span
             style={{
               backgroundImage: "linear-gradient(95deg, #38bdf8 0%, #7dd3fc 50%, #bae6fd 100%)",
@@ -58,12 +58,9 @@ export async function renderHomeOg({ role, bio, open }: { role: string; bio: str
           </span>
         </div>
 
-        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-end", gap: 60 }}>
-          <span style={{ fontSize: 24, lineHeight: 1.5, color: "rgba(255,255,255,0.4)", maxWidth: 620 }}>{bio}</span>
-          <div style={{ display: "flex", flexDirection: "column", alignItems: "flex-end", gap: 6 }}>
-            <span style={{ fontSize: 16, letterSpacing: 4, textTransform: "uppercase", color: "rgba(255,255,255,0.3)" }}>{role}</span>
-            <span style={{ fontFamily: "Geist Mono", fontSize: 22, color: "rgba(255,255,255,0.7)" }}>lucamimmo.dev</span>
-          </div>
+        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+          <span style={{ fontSize: 26, letterSpacing: 3, textTransform: "uppercase", color: "rgba(255,255,255,0.55)" }}>{role}</span>
+          <span style={{ fontFamily: "Geist Mono", fontSize: 34, color: "rgba(255,255,255,0.9)" }}>lucamimmo.dev</span>
         </div>
       </div>
     ),

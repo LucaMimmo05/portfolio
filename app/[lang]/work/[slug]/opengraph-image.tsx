@@ -12,7 +12,7 @@ export default async function Image({ params }: { params: Promise<{ lang: string
   const lang = hasLocale(rawLang) ? rawLang : "it";
   const t = translations[lang];
   const project = getProject(slug);
-  if (!project) return renderHomeOg({ role: t.hero.role, bio: t.hero.bio, open: t.hero.open });
+  if (!project) return renderHomeOg({ role: t.hero.role, open: t.hero.open });
 
   const proj = t.projects[project.key];
   return renderProjectOg({
