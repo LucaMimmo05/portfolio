@@ -2,6 +2,7 @@
 import { useState } from "react";
 import { useLang } from "@/context/LangContext";
 import AnimateIn from "@/components/AnimateIn";
+import { site } from "@/lib/site";
 
 type Status = "idle" | "loading" | "sent" | "error";
 
@@ -45,22 +46,20 @@ export default function Contact() {
             className="font-semibold text-white leading-[1.04] tracking-tight mb-10"
             style={{ fontSize: "clamp(2rem, 4.5vw, 3.5rem)" }}
           >
-            {t.contact.label === "Get in touch"
-              ? <>Let&apos;s build<br /><span className="text-white/30">something together.</span></>
-              : <>Costruiamo<br /><span className="text-white/30">qualcosa insieme.</span></>}
+            {t.contact.h1}<br /><span className="text-white/30">{t.contact.h2}</span>
           </h2>
 
           <div className="flex flex-col items-start gap-1 pt-2">
             {[
-              { label: "Email",    href: "mailto:lucamimmo2005@outlook.it", val: "lucamimmo2005@outlook.it" },
-              { label: "GitHub",   href: "https://github.com/LucaMimmo05",         val: "github.com/LucaMimmo05" },
-              { label: "LinkedIn", href: "https://www.linkedin.com/in/lucamimmo/", val: "linkedin.com/in/lucamimmo" },
+              { label: "Email",    href: `mailto:${site.email}`, val: site.email },
+              { label: "GitHub",   href: site.github,            val: "github.com/LucaMimmo05" },
+              { label: "LinkedIn", href: site.linkedin,          val: "linkedin.com/in/lucamimmo" },
             ].map((s) => (
               <a
                 key={s.label}
                 href={s.href}
                 target={s.href.startsWith("http") ? "_blank" : undefined}
-                rel={s.href.startsWith("http") ? "noopener noreferrer" : undefined}
+                rel={s.href.startsWith("http") ? "me noopener noreferrer" : undefined}
                 className="group inline-flex items-center gap-4 py-4"
               >
                 <span className="text-xs uppercase tracking-widest text-white/22 w-16 shrink-0">{s.label}</span>
@@ -84,7 +83,7 @@ export default function Contact() {
                 onClick={reset}
                 className="text-sm text-white/30 hover:text-white/60 transition-colors duration-200 mt-2"
               >
-                ← {t.contact.label === "Get in touch" ? "Send another" : "Invia un altro"}
+                ← {t.contact.another}
               </button>
             </div>
           ) : (
@@ -93,6 +92,9 @@ export default function Contact() {
                 required
                 type="text"
                 placeholder={t.contact.name}
+                aria-label={t.contact.name}
+                name="name"
+                autoComplete="name"
                 value={form.name}
                 onChange={(e) => setForm({ ...form, name: e.target.value })}
                 className={inputClass}
@@ -102,6 +104,9 @@ export default function Contact() {
                 required
                 type="email"
                 placeholder={t.contact.email}
+                aria-label={t.contact.email}
+                name="email"
+                autoComplete="email"
                 value={form.email}
                 onChange={(e) => setForm({ ...form, email: e.target.value })}
                 className={inputClass}
@@ -111,6 +116,8 @@ export default function Contact() {
                 required
                 rows={5}
                 placeholder={t.contact.message}
+                aria-label={t.contact.message}
+                name="message"
                 value={form.message}
                 onChange={(e) => setForm({ ...form, message: e.target.value })}
                 className={`${inputClass} resize-none`}
@@ -119,9 +126,7 @@ export default function Contact() {
 
               {status === "error" && (
                 <p className="text-xs text-red-400/70">
-                  {t.contact.label === "Get in touch"
-                    ? "Something went wrong. Try again or email me directly."
-                    : "Qualcosa è andato storto. Riprova o scrivimi direttamente."}
+                  {t.contact.error}
                 </p>
               )}
 

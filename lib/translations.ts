@@ -1,8 +1,16 @@
 export const translations = {
   en: {
+    seo: {
+      title: "Luca Mimmo — Full-Stack Web Developer (React, Next.js, Java)",
+      description: "Luca Mimmo is a full-stack web developer from Italy building fast, clean web apps with React, Next.js, TypeScript, Java and Spring Boot. Founding engineer at Newmann. Open to work.",
+      jobTitle: "Full-Stack Web Developer",
+      projectSuffix: "Project by Luca Mimmo",
+      notFound: "Page not found",
+      home: "Home",
+    },
     nav: {
       about: "About", work: "Work", experience: "Experience", contact: "Contact",
-      menu: "Menu", close: "Close",
+      menu: "Menu", close: "Close", switchLang: "Leggi in italiano",
     },
     hero: {
       role: "Junior Web Developer",
@@ -124,6 +132,9 @@ export const translations = {
       name: "Your name", email: "your@email.com",
       message: "Tell me about your project...",
       send: "Send message", sending: "Sending...", sent: "Message sent!",
+      h1: "Let's build", h2: "something together.",
+      another: "Send another",
+      error: "Something went wrong. Try again or email me directly.",
     },
     footer: {
       tagline: "Junior web developer building clean, performant apps. React, Java, and everything in between.",
@@ -134,9 +145,17 @@ export const translations = {
   },
 
   it: {
+    seo: {
+      title: "Luca Mimmo — Sviluppatore Web Full-Stack (React, Next.js, Java)",
+      description: "Luca Mimmo è uno sviluppatore web full-stack italiano: crea web app veloci e curate con React, Next.js, TypeScript, Java e Spring Boot. Founding engineer in Newmann. Disponibile per nuove opportunità.",
+      jobTitle: "Sviluppatore Web Full-Stack",
+      projectSuffix: "Progetto di Luca Mimmo",
+      notFound: "Pagina non trovata",
+      home: "Home",
+    },
     nav: {
       about: "Chi sono", work: "Lavori", experience: "Esperienza", contact: "Contatti",
-      menu: "Menu", close: "Chiudi",
+      menu: "Menu", close: "Chiudi", switchLang: "Read in English",
     },
     hero: {
       role: "Sviluppatore Web Junior",
@@ -258,6 +277,9 @@ export const translations = {
       name: "Il tuo nome", email: "tua@email.com",
       message: "Raccontami del tuo progetto...",
       send: "Invia messaggio", sending: "Invio in corso...", sent: "Messaggio inviato!",
+      h1: "Costruiamo", h2: "qualcosa insieme.",
+      another: "Invia un altro",
+      error: "Qualcosa è andato storto. Riprova o scrivimi direttamente.",
     },
     footer: {
       tagline: "Sviluppatore web junior che costruisce app pulite e performanti. React, Java e non solo.",

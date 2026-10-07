@@ -1,5 +1,10 @@
+import type { translations } from "@/lib/translations";
+
+export type ProjectKey = keyof (typeof translations)["en"]["projects"];
+
 export type Project = {
   slug: string;
+  key: ProjectKey;
   num: string;
   title: string;
   status: "In Progress" | "Completed" | "Active";
@@ -14,6 +19,7 @@ export type Project = {
 export const projects: Project[] = [
   {
     slug: "devhub",
+    key: "devhub",
     num: "01",
     title: "DevHub",
     status: "In Progress",
@@ -52,6 +58,7 @@ export const projects: Project[] = [
   },
   {
     slug: "pokemon-app",
+    key: "pokemon",
     num: "02",
     title: "Pokémon App",
     status: "Completed",
@@ -89,6 +96,7 @@ export const projects: Project[] = [
   },
   {
     slug: "newmann",
+    key: "newmann",
     num: "03",
     title: "Newmann",
     status: "Active",

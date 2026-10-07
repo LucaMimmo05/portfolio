@@ -1,17 +1,12 @@
 "use client";
 import Link from "next/link";
 import { useLang } from "@/context/LangContext";
-
-const slugToKey = {
-  "devhub": "devhub",
-  "pokemon-app": "pokemon",
-  "newmann": "newmann",
-} as const;
+import type { ProjectKey } from "@/data/projects";
 
 type ProjectLink = { label: string; href: string };
 
 type Props = {
-  slug: string;
+  projectKey: ProjectKey;
   num: string;
   title: string;
   year: string;
@@ -21,10 +16,9 @@ type Props = {
   nextTitle: string;
 };
 
-export default function ProjectContent({ slug, num, title, year, tags, links, nextSlug, nextTitle }: Props) {
-  const { t } = useLang();
-  const key = slugToKey[slug as keyof typeof slugToKey];
-  const proj = t.projects[key];
+export default function ProjectContent({ projectKey, num, title, year, tags, links, nextSlug, nextTitle }: Props) {
+  const { t, href } = useLang();
+  const proj = t.projects[projectKey];
   const pp = t.projectPage;
 
   return (
@@ -32,7 +26,7 @@ export default function ProjectContent({ slug, num, title, year, tags, links, ne
       {/* Hero */}
       <section className="px-6 md:px-10 pt-28 pb-12">
         <Link
-          href="/#work"
+          href={href("/#work")}
           className="inline-flex items-center gap-2 text-sm text-white/30 hover:text-white/65 transition-colors duration-200 mb-16 group"
         >
           <svg
@@ -116,7 +110,7 @@ export default function ProjectContent({ slug, num, title, year, tags, links, ne
       <section className="px-6 md:px-10 py-20 border-b border-white/6">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-20">
           <div className="md:col-span-2">
-            <p className="text-xs tracking-[0.2em] uppercase text-white/25 mb-6">{pp.overview}</p>
+            <h2 className="text-xs font-normal tracking-[0.2em] uppercase text-white/25 mb-6">{pp.overview}</h2>
             <p
               className="text-white/55 leading-relaxed"
               style={{ fontSize: "clamp(1rem, 1.4vw, 1.2rem)" }}
@@ -150,7 +144,7 @@ export default function ProjectContent({ slug, num, title, year, tags, links, ne
 
       {/* Highlights */}
       <section className="px-6 md:px-10 py-4">
-        <p className="text-xs tracking-[0.2em] uppercase text-white/25 mt-12 mb-4">{pp.highlights}</p>
+        <h2 className="text-xs font-normal tracking-[0.2em] uppercase text-white/25 mt-12 mb-4">{pp.highlights}</h2>
         {proj.highlights.map((h, i) => (
           <div
             key={h.label}
@@ -175,15 +169,15 @@ export default function ProjectContent({ slug, num, title, year, tags, links, ne
       <section className="px-6 md:px-10 py-16 border-t border-white/6">
         <p className="text-xs tracking-[0.2em] uppercase text-white/22 mb-8">{pp.nextProject}</p>
         <Link
-          href={`/work/${nextSlug}`}
+          href={href(`/work/${nextSlug}`)}
           className="group flex items-end justify-between gap-4"
         >
-          <h2
+          <p
             className="font-semibold tracking-tight text-white/50 group-hover:text-white transition-colors duration-300 leading-[0.95]"
             style={{ fontSize: "clamp(2.5rem, 7vw, 6rem)" }}
           >
             {nextTitle}
-          </h2>
+          </p>
           <div className="text-white/20 group-hover:text-[#38bdf8] group-hover:translate-x-1.5 group-hover:-translate-y-1.5 transition-all duration-300 shrink-0 mb-2">
             <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.2">
               <path d="M7 17L17 7M17 7H7M17 7V17" strokeLinecap="round" strokeLinejoin="round" />

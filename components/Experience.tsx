@@ -9,7 +9,7 @@ export default function Experience() {
   return (
     <section id="experience" className="px-6 md:px-10 py-32 border-t border-white/6">
       <AnimateIn>
-        <p className="text-xs tracking-[0.2em] uppercase text-white/25 mb-3">{t.experience.label}</p>
+        <h2 className="text-xs font-normal tracking-[0.2em] uppercase text-white/25 mb-3">{t.experience.label}</h2>
         <div className="w-8 h-px mb-20" style={{ background: "linear-gradient(90deg, #38bdf8, transparent)" }} />
       </AnimateIn>
 
@@ -47,7 +47,7 @@ export default function Experience() {
                 <div className="flex-1 space-y-3">
                   <div className="flex flex-wrap items-start justify-between gap-3">
                     <div>
-                      <h4 className="text-base font-semibold text-white/75 group-hover:text-white transition-colors duration-200">{exp.role}</h4>
+                      <h3 className="text-base font-semibold text-white/75 group-hover:text-white transition-colors duration-200">{exp.role}</h3>
                       <p className="text-sm text-white/30 mt-1">{exp.company}</p>
                     </div>
                     <span className="text-xs text-white/20 shrink-0">{exp.period}</span>
@@ -67,7 +67,7 @@ export default function Experience() {
 
       {/* Education */}
       <AnimateIn>
-        <p className="text-xs tracking-[0.2em] uppercase text-white/25 mb-10">{t.experience.education}</p>
+        <h3 className="text-xs font-normal tracking-[0.2em] uppercase text-white/25 mb-10">{t.experience.education}</h3>
       </AnimateIn>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         {t.experience.edu.map((edu, i) => (

@@ -3,11 +3,12 @@ import { useLang } from "@/context/LangContext";
 
 export default function Hero() {
   const { t } = useLang();
+  const display = { fontSize: "clamp(1rem, 13vw, 13rem)" };
   return (
     <section className="relative min-h-screen flex flex-col justify-between px-6 md:px-10 pt-36 pb-16 overflow-hidden">
 
       <div className="anim-fade relative z-10 flex items-center justify-between" style={{ animationDelay: "0.1s" }}>
-        <span className="text-xs tracking-[0.22em] uppercase text-white/25">{t.hero.role}</span>
+        <p className="text-xs tracking-[0.22em] uppercase text-white/25">Luca Mimmo · {t.hero.role}</p>
         <div className="flex items-center gap-2">
           <span className="w-1.5 h-1.5 rounded-full bg-[#38bdf8]/70 animate-pulse" />
           <span className="text-xs text-[#38bdf8]/60">{t.hero.open}</span>
@@ -15,11 +16,14 @@ export default function Hero() {
       </div>
 
       <div className="relative z-10 flex flex-col my-auto py-16">
-        <h1 className="anim-fade-up font-semibold leading-[0.88] tracking-[-0.03em] text-outline select-none" style={{ fontSize: "clamp(1rem, 13vw, 13rem)", animationDelay: "0.18s" }}>
-          {t.hero.line1}
-        </h1>
-        <h1 className="anim-fade-up font-semibold leading-[0.88] tracking-[-0.03em] select-none" style={{ fontSize: "clamp(1rem, 13vw, 13rem)", animationDelay: "0.3s", background: "linear-gradient(95deg, #38bdf8 0%, #7dd3fc 50%, #bae6fd 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>
-          {t.hero.line2}
+        <h1 className="font-semibold leading-[0.88] tracking-[-0.03em] select-none">
+          <span className="sr-only">Luca Mimmo — </span>
+          <span className="anim-fade-up block text-outline" style={{ ...display, animationDelay: "0.18s" }}>
+            {t.hero.line1}
+          </span>
+          <span className="anim-fade-up block" style={{ ...display, animationDelay: "0.3s", background: "linear-gradient(95deg, #38bdf8 0%, #7dd3fc 50%, #bae6fd 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>
+            {t.hero.line2}
+          </span>
         </h1>
       </div>
 

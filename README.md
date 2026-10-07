@@ -13,20 +13,24 @@ Personal portfolio built with Next.js, TypeScript, and Tailwind CSS v4.
 ## Features
 
 - Dark minimal design with sky blue accent
-- EN / IT language toggle (persisted in localStorage)
+- IT / EN localized routes (`/` Italian, `/en` English) with hreflang, choice remembered via cookie
+- SEO: per-page metadata, canonical URLs, Open Graph/Twitter cards with generated images, JSON-LD (Person, WebSite, projects), `sitemap.xml`, `robots.txt`, web manifest
 - Smooth scroll navigation with fixed navbar
 - Scroll-triggered fade-in animations (IntersectionObserver)
 - Individual project pages with highlights and tech stack
-- Contact form via `mailto:`
+- Contact form via [Resend](https://resend.com) (`/api/contact`)
 - Fully responsive
 
 ## Project Structure
 
 ```
+proxy.ts                # Locale routing (/ → it, /en → en)
 app/
-  page.tsx              # Homepage (all sections)
-  work/[slug]/page.tsx  # Individual project pages
-  layout.tsx
+  [lang]/layout.tsx     # Root layout + site metadata
+  [lang]/page.tsx       # Homepage (all sections)
+  [lang]/work/[slug]/   # Project pages + OG images
+  api/contact/route.ts  # Contact form endpoint
+  sitemap.ts, robots.ts, manifest.ts, icon.svg, apple-icon.tsx
   globals.css
 components/
   Navbar.tsx
@@ -41,7 +45,10 @@ components/
 context/
   LangContext.tsx        # i18n context
 lib/
-  translations.ts        # EN + IT strings
+  translations.ts        # EN + IT strings (incl. SEO titles/descriptions)
+  site.ts                # Site URL, socials, locale helpers
+  jsonld.tsx             # Structured data
+  og.tsx                 # Open Graph image template
 data/
   projects.ts            # Project data and links
 ```
@@ -54,6 +61,14 @@ npm run dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000).
+
+### Environment variables
+
+| Name | Purpose |
+| --- | --- |
+| `RESEND_API_KEY` | Sends contact form emails |
+| `NEXT_PUBLIC_SITE_URL` | Canonical site URL (defaults to `https://lucamimmo.dev`) |
+| `GOOGLE_SITE_VERIFICATION` | Optional Google Search Console verification token |
 
 ## Contact
 

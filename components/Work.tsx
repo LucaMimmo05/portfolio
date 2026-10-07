@@ -2,7 +2,6 @@
 import Link from "next/link";
 import { useLang } from "@/context/LangContext";
 import AnimateIn from "@/components/AnimateIn";
-import { projects } from "@/data/projects";
 
 const projectList = [
   { slug: "devhub",       num: "01", title: "DevHub",       tags: ["React", "Vite", "Quarkus", "PostgreSQL"],  key: "devhub"   as const },
@@ -11,24 +10,22 @@ const projectList = [
 ];
 
 export default function Work() {
-  const { t } = useLang();
+  const { t, href } = useLang();
   return (
     <section id="work" className="px-6 md:px-10 py-32">
       <AnimateIn>
-        <p className="text-xs tracking-[0.2em] uppercase text-white/25 mb-3">{t.work.label}</p>
+        <h2 className="text-xs font-normal tracking-[0.2em] uppercase text-white/25 mb-3">{t.work.label}</h2>
         <div className="w-8 h-px mb-20" style={{ background: "linear-gradient(90deg, #38bdf8, transparent)" }} />
       </AnimateIn>
 
       <div className="flex flex-col">
         {projectList.map((p, i) => {
           const proj = t.projects[p.key];
-          const data = projects.find((d) => d.slug === p.slug);
-          const links = data?.links ?? [];
           return (
             <AnimateIn key={p.slug} delay={i * 100}>
-              <Link href={`/work/${p.slug}`} className="group block">
+              <Link href={href(`/work/${p.slug}`)} className="group block">
                 <div className="relative border-t border-white/6 last:border-b py-12 md:py-16 flex flex-col md:flex-row md:items-center gap-8 md:gap-0 hover:border-white/14 transition-colors duration-300 overflow-hidden">
-                  <span className="absolute right-0 top-1/2 -translate-y-1/2 font-bold text-white/[0.022] select-none pointer-events-none leading-none group-hover:text-white/[0.042] transition-all duration-500" style={{ fontSize: "clamp(6rem, 18vw, 16rem)" }}>
+                  <span aria-hidden="true" className="absolute right-0 top-1/2 -translate-y-1/2 font-bold text-white/[0.022] select-none pointer-events-none leading-none group-hover:text-white/[0.042] transition-all duration-500" style={{ fontSize: "clamp(6rem, 18vw, 16rem)" }}>
                     {p.num}
                   </span>
                   <span className="text-xs font-mono text-[#38bdf8]/35 w-16 shrink-0">{p.num}</span>

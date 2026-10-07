@@ -2,11 +2,21 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { useLang } from "@/context/LangContext";
+import { localePath, site } from "@/lib/site";
 
 export default function Navbar() {
-  const { t, lang, toggle } = useLang();
+  const { t, lang, href } = useLang();
+  const pathname = usePathname();
   const [open, setOpen] = useState(false);
+
+  const otherLang = lang === "en" ? "it" : "en";
+  const basePath = pathname.replace(/^\/(it|en)(?=\/|$)/, "") || "/";
+  const switchHref = localePath(otherLang, basePath);
+  const rememberLang = () => {
+    document.cookie = `lang=${otherLang}; path=/; max-age=31536000; samesite=lax`;
+  };
 
   useEffect(() => {
     document.body.style.overflow = open ? "hidden" : "";
@@ -15,9 +25,10 @@ export default function Navbar() {
 
   const close = () => setOpen(false);
 
-  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
-    if (href.startsWith("/#")) {
-      const el = document.getElementById(href.slice(2));
+  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, target: string) => {
+    const [, hash] = target.split("#");
+    if (hash) {
+      const el = document.getElementById(hash);
       if (el) {
         e.preventDefault();
         close();
@@ -29,17 +40,17 @@ export default function Navbar() {
   };
 
   const links = [
-    { num: "01", label: t.nav.about,      href: "/#about" },
-    { num: "02", label: t.nav.work,       href: "/#work" },
-    { num: "03", label: t.nav.experience, href: "/#experience" },
-    { num: "04", label: t.nav.contact,    href: "/#contact" },
+    { num: "01", label: t.nav.about,      href: href("/#about") },
+    { num: "02", label: t.nav.work,       href: href("/#work") },
+    { num: "03", label: t.nav.experience, href: href("/#experience") },
+    { num: "04", label: t.nav.contact,    href: href("/#contact") },
   ];
 
   return (
     <>
       <header className="fixed top-0 left-0 right-0 z-50 px-6 md:px-10 py-6 flex items-center justify-between">
         <Link
-          href="/"
+          href={href("/")}
           onClick={close}
           className="text-sm font-semibold tracking-wide text-white/55 hover:text-white transition-colors duration-200"
         >
@@ -48,16 +59,23 @@ export default function Navbar() {
 
         <div className="flex items-center gap-5">
           {/* Language toggle */}
-          <button
-            onClick={toggle}
+          <Link
+            href={switchHref}
+            hrefLang={otherLang}
+            prefetch={false}
+            onClick={rememberLang}
+            aria-label={t.nav.switchLang}
+            title={t.nav.switchLang}
             className="text-xs font-medium tracking-widest text-white/30 hover:text-white/70 transition-colors duration-200 uppercase"
           >
-            {lang === "en" ? "IT" : "EN"}
-          </button>
+            {otherLang}
+          </Link>
 
           {/* Menu button */}
           <button
             onClick={() => setOpen((o) => !o)}
+            aria-expanded={open}
+            aria-controls="site-menu"
             className="flex items-center gap-2.5 text-sm text-white/45 hover:text-white transition-colors duration-200"
           >
             <span>{open ? t.nav.close : t.nav.menu}</span>
@@ -72,6 +90,9 @@ export default function Navbar() {
 
       {/* Overlay */}
       <div
+        id="site-menu"
+        aria-hidden={!open}
+        inert={!open}
         className={`fixed inset-0 z-40 bg-[#080808] flex flex-col justify-center px-8 md:px-16 transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] ${
           open ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
         }`}
@@ -103,15 +124,15 @@ export default function Navbar() {
           style={{ transitionDelay: open ? "330ms" : "0ms" }}
         >
           {[
-            { label: "GitHub",   href: "https://github.com/LucaMimmo05" },
-            { label: "LinkedIn", href: "https://www.linkedin.com/in/lucamimmo/" },
-            { label: "Email",    href: "mailto:lucamimmo2005@outlook.it" },
+            { label: "GitHub",   href: site.github },
+            { label: "LinkedIn", href: site.linkedin },
+            { label: "Email",    href: `mailto:${site.email}` },
           ].map((s) => (
             <a
               key={s.label}
               href={s.href}
               target={s.href.startsWith("http") ? "_blank" : undefined}
-              rel={s.href.startsWith("http") ? "noopener noreferrer" : undefined}
+              rel={s.href.startsWith("http") ? "me noopener noreferrer" : undefined}
               onClick={close}
               className="text-sm text-white/28 hover:text-white/65 transition-colors duration-200"
             >
