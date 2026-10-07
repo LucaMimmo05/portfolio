@@ -2,19 +2,24 @@
 
 import { useEffect, useRef, useState } from "react";
 
+type Variant = "up" | "fade" | "scale";
+
 interface Props {
   children: React.ReactNode;
   className?: string;
   delay?: number;
   threshold?: number;
+  variant?: Variant;
 }
 
-export default function AnimateIn({
-  children,
-  className = "",
-  delay = 0,
-  threshold = 0.12,
-}: Props) {
+const hidden: Record<Variant, string> = {
+  up: "opacity-0 translate-y-8 blur-[6px]",
+  fade: "opacity-0 blur-[4px]",
+  scale: "opacity-0 scale-[0.96] blur-[6px]",
+};
+
+/** Reveals its children once they scroll into view: rises, fades and comes into focus. */
+export default function AnimateIn({ children, className = "", delay = 0, threshold = 0.12, variant = "up" }: Props) {
   const ref = useRef<HTMLDivElement>(null);
   const [visible, setVisible] = useState(false);
 
@@ -24,23 +29,22 @@ export default function AnimateIn({
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
-          setTimeout(() => setVisible(true), delay);
+          setVisible(true);
           observer.disconnect();
         }
       },
-      { threshold }
+      { threshold, rootMargin: "0px 0px -6% 0px" },
     );
     observer.observe(el);
     return () => observer.disconnect();
-  }, [delay, threshold]);
+  }, [threshold]);
 
   return (
     <div
       ref={ref}
-      className={`transition-all duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] ${
-        visible
-          ? "opacity-100 translate-y-0"
-          : "opacity-0 translate-y-5"
+      style={{ transitionDelay: visible ? `${delay}ms` : "0ms" }}
+      className={`reveal transition-[opacity,transform,filter] duration-[900ms] ease-[cubic-bezier(0.22,1,0.36,1)] ${
+        visible ? "opacity-100 translate-y-0 scale-100 blur-0" : hidden[variant]
       } ${className}`}
     >
       {children}

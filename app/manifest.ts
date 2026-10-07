@@ -3,7 +3,7 @@ import { translations } from "@/lib/translations";
 
 export default function manifest(): MetadataRoute.Manifest {
   return {
-    name: "Luca Mimmo — Portfolio",
+    name: "Luca Mimmo | Portfolio",
     short_name: "Luca Mimmo",
     description: translations.it.seo.description,
     start_url: "/",

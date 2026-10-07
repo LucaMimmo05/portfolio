@@ -6,7 +6,7 @@ const skills = [
 
 export default function Marquee() {
   return (
-    <div className="relative border-y border-white/6 py-5 overflow-hidden">
+    <div className="relative border-y border-white/6 py-5 overflow-hidden [mask-image:linear-gradient(90deg,transparent,black_12%,black_88%,transparent)]">
       <div className="marquee-track">
         {[...skills, ...skills].map((skill, i) => (
           <div key={i} className="flex items-center shrink-0">

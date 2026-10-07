@@ -18,6 +18,22 @@ export default function Navbar() {
     document.cookie = `lang=${otherLang}; path=/; max-age=31536000; samesite=lax`;
   };
 
+  // Solid backdrop once the page scrolls; hide while scrolling down, show again when scrolling up
+  const [scrolled, setScrolled] = useState(false);
+  const [hidden, setHidden] = useState(false);
+  useEffect(() => {
+    let last = window.scrollY;
+    const onScroll = () => {
+      const y = window.scrollY;
+      setScrolled(y > 24);
+      setHidden(y > 200 && y > last);
+      last = y;
+    };
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
   useEffect(() => {
     document.body.style.overflow = open ? "hidden" : "";
     return () => { document.body.style.overflow = ""; };
@@ -48,7 +64,12 @@ export default function Navbar() {
 
   return (
     <>
-      <header className="fixed top-0 left-0 right-0 z-50 px-6 md:px-10 py-6 flex items-center justify-between">
+      <header
+        className={`fixed top-0 left-0 right-0 z-50 px-6 md:px-10 transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] ${
+          scrolled && !open ? "py-4 bg-[#080808]/70 backdrop-blur-xl border-b border-white/[0.06]" : "py-6 border-b border-transparent"
+        } ${hidden && !open ? "-translate-y-full" : "translate-y-0"}`}
+      >
+        <div className="w-full flex items-center justify-between">
         <Link
           href={href("/")}
           onClick={close}
@@ -85,6 +106,7 @@ export default function Navbar() {
               <span className={`block h-px bg-current transition-all duration-300 origin-center ${open ? "-rotate-45 -translate-y-[7px]" : ""}`} />
             </div>
           </button>
+        </div>
         </div>
       </header>
 

@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import { Geist } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
 import { LangProvider } from "@/context/LangContext";
+import { ScrollProgress } from "@/components/motion";
 import { translations } from "@/lib/translations";
 import { alternatesFor, hasLocale, localePath, locales, ogLocale, site, siteUrl } from "@/lib/site";
 import "../globals.css";
@@ -25,7 +26,7 @@ export async function generateMetadata({ params }: LayoutProps<"/[lang]">): Prom
 
   return {
     metadataBase: new URL(siteUrl),
-    title: { default: seo.title, template: `%s — ${site.name}` },
+    title: { default: seo.title, template: `%s | ${site.name}` },
     description: seo.description,
     applicationName: site.name,
     authors: [{ name: site.name, url: siteUrl }],
@@ -73,6 +74,7 @@ export default async function RootLayout({ children, params }: LayoutProps<"/[la
   return (
     <html lang={lang} className={geist.variable}>
       <body className="min-h-screen bg-[#080808] text-white antialiased">
+        <ScrollProgress />
         <LangProvider lang={lang}>{children}</LangProvider>
         <Analytics />
       </body>

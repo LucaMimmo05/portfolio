@@ -21,7 +21,7 @@ export async function generateMetadata({ params }: PageProps<"/[lang]/work/[slug
 
   const t = translations[lang];
   const description = t.projects[project.key].desc;
-  const title = `${project.title} — ${t.seo.projectSuffix}`;
+  const title = `${project.title} | ${t.seo.projectSuffix}`;
 
   return {
     title: { absolute: title },
@@ -47,18 +47,25 @@ export default async function ProjectPage({ params }: PageProps<"/[lang]/work/[s
       <JsonLd data={projectJsonLd(lang, project, description)} />
       <Navbar />
       <main className="relative min-h-screen bg-[#080808] overflow-x-hidden">
-        <ProjectContent
-          projectKey={project.key}
-          num={project.num}
-          title={project.title}
-          year={project.year}
-          tags={project.tags}
-          links={project.links ?? []}
-          nextSlug={next.slug}
-          nextTitle={next.title}
-        />
+        {/* No global cap: the hero spans the screen, every other section sets its own width */}
+        <div>
+          <ProjectContent
+            projectKey={project.key}
+            num={project.num}
+            title={project.title}
+            year={project.year}
+            tags={project.tags}
+            links={project.links ?? []}
+            images={project.images}
+            devices={project.devices}
+            nextSlug={next.slug}
+            nextTitle={next.title}
+          />
+        </div>
       </main>
-      <Footer />
+      <div className="mx-auto w-full max-w-[1760px]">
+        <Footer />
+      </div>
     </>
   );
 }

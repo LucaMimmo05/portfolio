@@ -34,7 +34,10 @@ export function homeJsonLd(lang: Lang) {
         nationality: { "@type": "Country", name: "Italy" },
         address: { "@type": "PostalAddress", addressCountry: "IT" },
         worksFor: { "@type": "Organization", name: "Newmann", url: "https://newmann.ai" },
-        alumniOf: t.experience.edu.map((e) => ({ "@type": "EducationalOrganization", name: e.school })),
+        // Only finished programmes count as alumniOf; ongoing ones are not alumni yet
+        alumniOf: t.experience.edu
+          .filter((e) => !/present/i.test(e.period))
+          .map((e) => ({ "@type": "EducationalOrganization", name: e.school })),
         knowsAbout: [
           "Web development", "React", "Next.js", "TypeScript", "JavaScript", "Angular", "Vue",
           "Java", "Spring Boot", "Quarkus", "Node.js", "PostgreSQL", "MongoDB", "Redis",

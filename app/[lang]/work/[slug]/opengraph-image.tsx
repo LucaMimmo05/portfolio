@@ -5,7 +5,7 @@ import { ogSize, renderHomeOg, renderProjectOg } from "@/lib/og";
 
 export const size = ogSize;
 export const contentType = "image/png";
-export const alt = "Luca Mimmo — Project";
+export const alt = "Project by Luca Mimmo";
 
 export default async function Image({ params }: { params: Promise<{ lang: string; slug: string }> }) {
   const { lang: rawLang, slug } = await params;

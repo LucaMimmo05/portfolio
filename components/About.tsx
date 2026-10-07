@@ -1,35 +1,46 @@
 "use client";
 import { useLang } from "@/context/LangContext";
 import AnimateIn from "@/components/AnimateIn";
+import { Pill, icons } from "@/components/ui";
+import { RevealWords, trackPointer } from "@/components/motion";
 
 export default function About() {
   const { t } = useLang();
   return (
-    <section id="about" className="px-6 md:px-10 py-32 border-t border-white/6">
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-20 items-start">
-        <AnimateIn>
-          <p className="text-xs tracking-[0.2em] uppercase text-white/25 mb-3">{t.about.label}</p>
-          <div className="w-8 h-px mb-10" style={{ background: "linear-gradient(90deg, #38bdf8, transparent)" }} />
-          <h2 className="font-semibold text-white leading-[1.04] tracking-tight" style={{ fontSize: "clamp(2rem, 4.5vw, 3.5rem)" }}>
-            {t.about.h1}<br />
-            <span className="text-white/30">{t.about.h2}</span>
+    <section id="about" className="px-4 md:px-6 py-28 md:py-36">
+      <div className="max-w-[1440px] mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start px-2 md:px-8">
+        <AnimateIn className="lg:col-span-5">
+          <Pill>{t.about.label}</Pill>
+          <h2 className="mt-6 font-medium text-white leading-[1.04] tracking-[-0.03em]" style={{ fontSize: "clamp(2.2rem, 4.6vw, 3.8rem)" }}>
+            <RevealWords text={t.about.h1} />
+            <br />
+            <RevealWords text={t.about.h2} className="text-white/40" delay={200} />
           </h2>
         </AnimateIn>
 
-        <AnimateIn delay={120}>
-          <div className="space-y-8 md:pt-20">
-            <p className="text-white/40 text-base leading-loose">{t.about.p1}</p>
-            <p className="text-white/40 text-base leading-loose">{t.about.p2}</p>
-            <div className="grid grid-cols-2 gap-5 pt-6">
-              {t.about.facts.map((item, i) => (
-                <AnimateIn key={item.label} delay={160 + i * 60}>
-                  <div className="border-l border-white/8 pl-5 py-3 hover:border-[#38bdf8]/40 transition-colors duration-300">
-                    <p className="text-[10px] uppercase tracking-widest text-white/22 mb-2">{item.label}</p>
-                    <p className="text-sm font-medium text-white/60">{item.value}</p>
-                  </div>
-                </AnimateIn>
-              ))}
-            </div>
+        <AnimateIn delay={120} className="lg:col-span-7 lg:pt-14">
+          <div className="space-y-6 max-w-2xl">
+            <p className="text-white/70 text-lg leading-relaxed [text-wrap:pretty]">{t.about.p1}</p>
+            <p className="text-white/55 text-lg leading-relaxed [text-wrap:pretty]">{t.about.p2}</p>
+          </div>
+          <div className="mt-12 grid grid-cols-1 sm:grid-cols-2 gap-3">
+            {t.about.facts.map((item, i) => (
+              <div
+                key={item.label}
+                onPointerMove={trackPointer}
+                className="spotlight group rounded-2xl border border-white/[0.06] bg-white/[0.02] p-5 flex items-start gap-4 hover:border-[#38bdf8]/25 hover:bg-white/[0.035] transition-colors duration-300"
+              >
+                <div className="shrink-0 w-10 h-10 rounded-xl border border-[#38bdf8]/20 bg-gradient-to-br from-[#38bdf8]/20 to-[#38bdf8]/5 flex items-center justify-center text-[#7dd3fc]">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                    {icons[i % icons.length]}
+                  </svg>
+                </div>
+                <div>
+                  <p className="text-[11px] uppercase tracking-[0.16em] text-white/40 mb-1.5">{item.label}</p>
+                  <p className="text-[15px] font-medium text-white/85">{item.value}</p>
+                </div>
+              </div>
+            ))}
           </div>
         </AnimateIn>
       </div>

@@ -4,11 +4,11 @@ Personal portfolio built with Next.js, TypeScript, and Tailwind CSS v4.
 
 ## Stack
 
-- **Framework** — Next.js 16 (App Router)
-- **Language** — TypeScript
-- **Styling** — Tailwind CSS v4
-- **Font** — Geist Sans
-- **Deployment** — Vercel
+- **Framework** - Next.js 16 (App Router)
+- **Language** - TypeScript
+- **Styling** - Tailwind CSS v4
+- **Font** - Geist Sans
+- **Deployment** - Vercel
 
 ## Features
 
@@ -72,4 +72,4 @@ Open [http://localhost:3000](http://localhost:3000).
 
 ## Contact
 
-[lucamimmo2005@outlook.it](mailto:lucamimmo2005@outlook.it) — [linkedin.com/in/lucamimmo](https://www.linkedin.com/in/lucamimmo/) — [github.com/LucaMimmo05](https://github.com/LucaMimmo05)
+[lucamimmo2005@outlook.it](mailto:lucamimmo2005@outlook.it) - [linkedin.com/in/lucamimmo](https://www.linkedin.com/in/lucamimmo/) - [github.com/LucaMimmo05](https://github.com/LucaMimmo05)

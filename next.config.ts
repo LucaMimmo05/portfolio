@@ -2,6 +2,11 @@ import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   poweredByHeader: false,
+  images: {
+    // Screenshots are served sharper than the default 75
+    qualities: [75, 90],
+    formats: ["image/avif", "image/webp"],
+  },
   async headers() {
     return [
       {

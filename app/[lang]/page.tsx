@@ -19,15 +19,20 @@ export default async function Home({ params }: PageProps<"/[lang]">) {
       <JsonLd data={homeJsonLd(lang)} />
       <Navbar />
       <main className="relative min-h-screen bg-[#080808] overflow-x-hidden">
-        <Hero />
-        <Marquee />
-        <Work />
-        <Marquee />
-        <About />
-        <Experience />
-        <Contact />
+        {/* No global cap: the hero spans the screen, every other section sets its own width */}
+        <div>
+          <Hero />
+          <Marquee />
+          <Work />
+          <Marquee />
+          <About />
+          <Experience />
+          <Contact />
+        </div>
       </main>
-      <Footer />
+      <div className="mx-auto w-full max-w-[1760px]">
+        <Footer />
+      </div>
     </>
   );
 }
