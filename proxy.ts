@@ -30,8 +30,8 @@ export function proxy(request: NextRequest) {
 }
 
 export const config = {
-  // Skip API, Next internals, metadata routes and any file with an extension.
+  // Skip API, Next/Vercel internals, metadata routes and any file with an extension.
   matcher: [
-    "/((?!api|_next|.*opengraph-image|.*twitter-image|icon|apple-icon|.*\\..*).*)",
+    "/((?!api|_next|_vercel|.*opengraph-image|.*twitter-image|icon|apple-icon|.*\\..*).*)",
   ],
 };

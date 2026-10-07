@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { notFound } from "next/navigation";
 import { Geist } from "next/font/google";
+import { Analytics } from "@vercel/analytics/next";
 import { LangProvider } from "@/context/LangContext";
 import { translations } from "@/lib/translations";
 import { alternatesFor, hasLocale, locales, ogLocale, site, siteUrl } from "@/lib/site";
@@ -72,6 +73,7 @@ export default async function RootLayout({ children, params }: LayoutProps<"/[la
     <html lang={lang} className={geist.variable}>
       <body className="min-h-screen bg-[#080808] text-white antialiased">
         <LangProvider lang={lang}>{children}</LangProvider>
+        <Analytics />
       </body>
     </html>
   );
