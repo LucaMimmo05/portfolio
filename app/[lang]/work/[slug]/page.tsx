@@ -5,7 +5,7 @@ import Footer from "@/components/Footer";
 import ProjectContent from "@/components/ProjectContent";
 import { getProject, projects } from "@/data/projects";
 import { translations } from "@/lib/translations";
-import { alternatesFor, hasLocale, locales, ogLocale, site } from "@/lib/site";
+import { alternatesFor, hasLocale, localePath, locales, ogLocale, site } from "@/lib/site";
 import { JsonLd, projectJsonLd } from "@/lib/jsonld";
 
 export function generateStaticParams() {
@@ -28,7 +28,7 @@ export async function generateMetadata({ params }: PageProps<"/[lang]/work/[slug
     description,
     keywords: [project.title, ...project.tags, "Luca Mimmo"],
     alternates: alternatesFor(lang, `/work/${project.slug}`),
-    openGraph: { type: "article", siteName: site.name, locale: ogLocale[lang], title, description },
+    openGraph: { type: "article", url: localePath(lang, `/work/${project.slug}`), siteName: site.name, locale: ogLocale[lang], title, description },
     twitter: { card: "summary_large_image", title, description },
   };
 }

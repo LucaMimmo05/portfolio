@@ -4,7 +4,7 @@ import { Geist } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
 import { LangProvider } from "@/context/LangContext";
 import { translations } from "@/lib/translations";
-import { alternatesFor, hasLocale, locales, ogLocale, site, siteUrl } from "@/lib/site";
+import { alternatesFor, hasLocale, localePath, locales, ogLocale, site, siteUrl } from "@/lib/site";
 import "../globals.css";
 
 const geist = Geist({ variable: "--font-geist-sans", subsets: ["latin"] });
@@ -47,6 +47,7 @@ export async function generateMetadata({ params }: LayoutProps<"/[lang]">): Prom
     alternates: alternatesFor(lang),
     openGraph: {
       type: "website",
+      url: localePath(lang),
       siteName: site.name,
       locale: ogLocale[lang],
       alternateLocale: locales.filter((l) => l !== lang).map((l) => ogLocale[l]),

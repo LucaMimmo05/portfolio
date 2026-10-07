@@ -1,21 +1,27 @@
 import { getProject } from "@/data/projects";
 import { translations } from "@/lib/translations";
-import { hasLocale } from "@/lib/site";
-import { ogSize, renderOg } from "@/lib/og";
+import { hasLocale, localePath } from "@/lib/site";
+import { ogSize, renderHomeOg, renderProjectOg } from "@/lib/og";
 
 export const size = ogSize;
 export const contentType = "image/png";
-export const alt = "Project by Luca Mimmo";
+export const alt = "Luca Mimmo — Project";
 
 export default async function Image({ params }: { params: Promise<{ lang: string; slug: string }> }) {
-  const { lang, slug } = await params;
-  const t = translations[hasLocale(lang) ? lang : "it"];
+  const { lang: rawLang, slug } = await params;
+  const lang = hasLocale(rawLang) ? rawLang : "it";
+  const t = translations[lang];
   const project = getProject(slug);
-  if (!project) return renderOg({ eyebrow: "Luca Mimmo", title: "Luca Mimmo", subtitle: t.hero.bio });
-  return renderOg({
-    eyebrow: `${t.seo.projectSuffix} · ${project.year}`,
+  if (!project) return renderHomeOg({ role: t.hero.role, bio: t.hero.bio, open: t.hero.open });
+
+  const proj = t.projects[project.key];
+  return renderProjectOg({
+    num: project.num,
     title: project.title,
-    subtitle: t.projects[project.key].desc,
+    status: proj.status,
+    year: project.year,
+    desc: proj.desc,
     tags: project.tags,
+    path: `lucamimmo.dev${localePath(lang, `/work/${project.slug}`)}`,
   });
 }
