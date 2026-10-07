@@ -9,8 +9,22 @@ const quicksand = Quicksand({ subsets: ["latin"], weight: ["500", "600", "700"] 
  * Brand covers built from each project's own logo, colours and type, all at 16:10.
  * Used on the home cards so every project reads as a consistent, compact tile.
  */
-export default function ProjectCover({ projectKey, title, lang = "it" }: { projectKey: ProjectKey; title: string; lang?: "it" | "en" }) {
+export default function ProjectCover({ projectKey, title, lang = "it", variant = "full" }: { projectKey: ProjectKey; title: string; lang?: "it" | "en"; variant?: "full" | "mark" }) {
   const base = "relative aspect-[16/10] w-full overflow-hidden rounded-[22px] md:rounded-[28px]";
+
+  // Small thumbnail: just the brand mark on the brand colour, readable at any size
+  if (variant === "mark") {
+    const marks = {
+      devhub: { bg: "#121924", img: "/work/devhub/logo.svg", w: 175, h: 35, size: "w-[72%]" },
+      pokemon: { bg: "radial-gradient(70% 80% at 50% 40%, #5a82d6, #3f63b8 60%, #2f4e98)", img: "/work/pokemon-app/cover/pokeball.webp", w: 900, h: 900, size: "w-[44%]" },
+      newmann: { bg: "#f7f7f7", img: "/work/newmann/logo-octopus.webp", w: 787, h: 717, size: "w-[44%]" },
+    }[projectKey];
+    return (
+      <div className="relative aspect-[16/10] w-full overflow-hidden flex items-center justify-center" style={{ background: marks.bg }}>
+        <Image src={marks.img} alt={`${title} logo`} width={marks.w} height={marks.h} className={`${marks.size} h-auto`} />
+      </div>
+    );
+  }
 
   if (projectKey === "devhub") {
     // DevHub's own palette: app background #121924, cards #171f2b, blue accent #3B82F6

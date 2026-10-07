@@ -9,14 +9,17 @@ export const translations = {
       home: "Home",
     },
     nav: {
-      about: "About", work: "Work", experience: "Experience", contact: "Contact",
-      menu: "Menu", close: "Close", switchLang: "Leggi in italiano",
+      about: "About", work: "Projects", experience: "Experience", contact: "Contact",
+      menu: "Menu", close: "Close", switchLang: "Leggi in italiano", home: "Home", caseStudies: "Case studies", reach: "Get in touch", primary: "Main navigation",
     },
     hero: {
       role: "Full-Stack Web Developer",
-      line1: "SOFTWARE", line2: "DEVELOPER.",
-      bio: "Full-stack developer working with React and Java. I build real products, from the API to the last pixel.",
       cta: "See my work", email: "Email me", open: "Open to work",
+      lead: "Full-stack developer. I build the interface, the API behind it and the data underneath, and I ship it to production.",
+      layers: { ui: "Interface", api: "API", data: "Data" },
+      stackLabel: "One request travelling through the stack: interface, API and database",
+      now: "Founding developer at Newmann",
+      replay: "Send another request",
     },
     about: {
       label: "About",
@@ -31,7 +34,7 @@ export const translations = {
       ],
     },
     cv: { download: "Download CV", language: "CV language" },
-    work: { label: "Selected Work", pill: "Work", intro: "Three projects, from a personal tool to a startup product, each with the decisions behind it.", cta: "Read the case study" },
+    work: { label: "Selected projects", pill: "Projects", intro: "Three projects, from a personal tool to a startup product, each with the decisions behind it.", cta: "Read the case study" },
     projects: {
       devhub: {
         status: "In Progress",
@@ -222,14 +225,17 @@ export const translations = {
       home: "Home",
     },
     nav: {
-      about: "Chi sono", work: "Lavori", experience: "Esperienza", contact: "Contatti",
-      menu: "Menu", close: "Chiudi", switchLang: "Read in English",
+      about: "Chi sono", work: "Progetti", experience: "Esperienza", contact: "Contatti",
+      menu: "Menu", close: "Chiudi", switchLang: "Read in English", home: "Home", caseStudies: "Case study", reach: "Contatti", primary: "Navigazione principale",
     },
     hero: {
       role: "Sviluppatore Web Full-Stack",
-      line1: "SOFTWARE", line2: "DEVELOPER.",
-      bio: "Sviluppatore full-stack con React e Java. Costruisco prodotti veri, dall'API all'ultimo pixel.",
       cta: "Guarda i progetti", email: "Scrivimi", open: "Disponibile",
+      lead: "Sviluppatore full-stack. Costruisco l'interfaccia, l'API che c'è dietro e i dati sotto, e li porto in produzione.",
+      layers: { ui: "Interfaccia", api: "API", data: "Dati" },
+      stackLabel: "Una richiesta che attraversa la stack: interfaccia, API e database",
+      now: "Founding developer in Newmann",
+      replay: "Invia un'altra richiesta",
     },
     about: {
       label: "Chi sono",
@@ -244,7 +250,7 @@ export const translations = {
       ],
     },
     cv: { download: "Scarica CV", language: "Lingua del CV" },
-    work: { label: "Progetti selezionati", pill: "Lavori", intro: "Tre progetti, da uno strumento personale a un prodotto per una startup, ognuno con le scelte che ci stanno dietro.", cta: "Leggi il case study" },
+    work: { label: "Progetti selezionati", pill: "Progetti", intro: "Tre progetti, da uno strumento personale a un prodotto per una startup, ognuno con le scelte che ci stanno dietro.", cta: "Leggi il case study" },
     projects: {
       devhub: {
         status: "In Sviluppo",
