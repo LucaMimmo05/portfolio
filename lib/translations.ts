@@ -20,7 +20,7 @@ export const translations = {
     },
     about: {
       label: "About",
-      h1: "Early in my career,", h2: "not new to shipping.",
+      h1: "Full-stack,", h2: "with real products behind me.",
       p1: "I'm Luca Mimmo, a full-stack developer from Gallarate, Italy. I build web apps end to end (React and Next.js on the frontend, Java with Spring Boot or Quarkus on the backend), and since February 2026 I've been doing it in production as founding developer at Newmann.",
       p2: "I finished ITS Incom in 2026 and I'm now studying for a bachelor's in Computer Engineering & AI at EPICODE. When something doesn't work, I stay on it until I understand why.",
       facts: [
@@ -233,7 +233,7 @@ export const translations = {
     },
     about: {
       label: "Chi sono",
-      h1: "Giovane,", h2: "ma non improvvisato.",
+      h1: "Full-stack,", h2: "con prodotti veri alle spalle.",
       p1: "Sono Luca Mimmo, sviluppatore full-stack di Gallarate. Costruisco web app da cima a fondo (React e Next.js sul frontend, Java con Spring Boot o Quarkus sul backend) e da febbraio 2026 lo faccio in produzione come founding developer in Newmann.",
       p2: "Ho concluso l'ITS Incom nel 2026 e ora studio per la laurea in Computer Engineering & AI in EPICODE. Quando qualcosa non funziona, ci resto sopra finché non capisco perché.",
       facts: [
