@@ -169,15 +169,6 @@ export const translations = {
       ],
       edu: [
         {
-          degree: "Bachelor in Computer Engineering & Artificial Intelligence",
-          school: "EPICODE Institute of Technology",
-          eqf: 6,
-          period: "Sep 2026 – Present",
-          grade: "",
-          desc: "Bachelor's degree in computer engineering and artificial intelligence, focused on programming and its applications. In progress.",
-          tags: ["Computer Engineering", "AI", "Programming"],
-        },
-        {
           degree: "Web Developer",
           school: "ITS Incom Academy, Busto Arsizio",
           eqf: 5,
@@ -384,15 +375,6 @@ export const translations = {
         },
       ],
       edu: [
-        {
-          degree: "Bachelor in Computer Engineering & Artificial Intelligence",
-          school: "EPICODE Institute of Technology",
-          eqf: 6,
-          period: "Set 2026 – Presente",
-          grade: "",
-          desc: "Laurea triennale in ingegneria informatica e intelligenza artificiale, con focus sulla programmazione e sulle sue applicazioni. In corso.",
-          tags: ["Ingegneria informatica", "AI", "Programmazione"],
-        },
         {
           degree: "Web Developer",
           school: "ITS Incom Academy, Busto Arsizio",
