@@ -58,7 +58,7 @@ export default function StackScene({ labels, ariaLabel, replayLabel }: { labels:
   const planes = [
     { key: "ui", z: G * gap, label: labels.ui, tech: "React · Next.js", delay: "1.3s" },
     { key: "api", z: 0, label: labels.api, tech: "Spring Boot · Quarkus", delay: "1.75s" },
-    { key: "data", z: -G * gap, label: labels.data, tech: "PostgreSQL · Redis", delay: "2.2s" },
+    { key: "data", z: -G * gap, label: labels.data, tech: "PostgreSQL · MySQL", delay: "2.2s" },
   ];
 
   return (

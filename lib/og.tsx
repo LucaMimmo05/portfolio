@@ -103,10 +103,10 @@ export async function renderCaseStudyOg({ projectKey, lang, label, path }: {
   if (projectKey === "devhub") {
     const logo = await dataUri("devhub-logo.svg", "image/svg+xml");
     const stats = [
-      ["3", "Projects", "#3B82F6"],
-      ["5", "Open Tasks", "#F59E0B"],
-      ["2", "Notes", "#22C55E"],
-      ["4", "Commands", "#A855F7"],
+      ["3", "Due today", "#3B82F6"],
+      ["2", "Overdue", "#EF4444"],
+      ["2", "In progress", "#F59E0B"],
+      ["5", "Projects", "#A855F7"],
     ];
     body = (
       <div style={{ width: "100%", height: "100%", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", gap: 56, background: "#121924", paddingBottom: 74 }}>
