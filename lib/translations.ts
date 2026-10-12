@@ -29,7 +29,7 @@ export const translations = {
       facts: [
         { label: "Frontend",  value: "React, Next.js & TypeScript" },
         { label: "Backend",   value: "Java · Spring Boot · Quarkus" },
-        { label: "Data",      value: "PostgreSQL, MySQL, Redis" },
+        { label: "Data",      value: "PostgreSQL, MySQL" },
         { label: "Right now", value: "Newmann + EPICODE" },
       ],
     },
@@ -250,7 +250,7 @@ export const translations = {
       facts: [
         { label: "Frontend",    value: "React, Next.js e TypeScript" },
         { label: "Backend",     value: "Java · Spring Boot · Quarkus" },
-        { label: "Dati",        value: "PostgreSQL, MySQL, Redis" },
+        { label: "Dati",        value: "PostgreSQL, MySQL" },
         { label: "Adesso",      value: "Newmann + EPICODE" },
       ],
     },

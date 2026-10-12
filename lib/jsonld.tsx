@@ -41,7 +41,7 @@ export function personJsonLd(lang: Lang) {
           .map((e) => ({ "@type": "EducationalOrganization", name: e.school })),
         knowsAbout: [
           "Web development", "React", "Next.js", "TypeScript", "JavaScript", "Angular", "Vue",
-          "Java", "Spring Boot", "Quarkus", "Node.js", "PostgreSQL", "MongoDB", "Redis",
+          "Java", "Spring Boot", "Quarkus", "Node.js", "PostgreSQL", "MongoDB",
           "REST APIs", "OAuth2", "JWT", "Tailwind CSS",
         ],
         knowsLanguage: ["it", "en"],
