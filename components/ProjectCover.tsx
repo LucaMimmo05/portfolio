@@ -27,12 +27,13 @@ export default function ProjectCover({ projectKey, title, lang = "it", variant =
   }
 
   if (projectKey === "devhub") {
-    // DevHub's own palette: app background #121924, cards #171f2b, blue accent #3B82F6
+    // DevHub's own palette: app background #121924, cards #171f2b, blue accent #3B82F6.
+    // The stats mirror the summary on DevHub's home page.
     const stats = [
-      { n: 3, label: "Projects", color: "#3B82F6", d: "M3 7h6l2 2h10v10H3z" },
-      { n: 5, label: "Open Tasks", color: "#F59E0B", d: "M4 6h3M4 12h3M4 18h3M10 6h10M10 12h10M10 18h10" },
-      { n: 2, label: "Notes", color: "#22C55E", d: "M6 3h9l4 4v14H6zM9 12h6M9 16h6" },
-      { n: 4, label: "Commands", color: "#A855F7", d: "M4 17l6-5-6-5M12 19h8" },
+      { n: 3, label: "Due today", color: "#3B82F6", d: "M4 6h16v14H4zM4 10h16M9 3v4M15 3v4" },
+      { n: 2, label: "Overdue", color: "#EF4444", d: "M12 3a9 9 0 1 0 0 18 9 9 0 0 0 0-18zM12 7v5l3 2" },
+      { n: 2, label: "In progress", color: "#F59E0B", d: "M3 12h4l3-7 4 14 3-7h4" },
+      { n: 5, label: "Projects", color: "#A855F7", d: "M3 7h6l2 2h10v10H3z" },
     ];
     return (
       <div className={base} style={{ background: "#121924" }}>

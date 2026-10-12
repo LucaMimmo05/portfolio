@@ -48,7 +48,7 @@ export const projects: Project[] = [
     num: "02",
     title: "DevHub",
     year: "2025",
-    tags: ["React", "Vite", "TypeScript", "Quarkus", "Java", "PostgreSQL", "Redis"],
+    tags: ["React", "TypeScript", "Vite", "TanStack Query", "Quarkus", "Java", "PostgreSQL", "GitHub API"],
     links: [
       { label: "GitHub FE", href: "https://github.com/LucaMimmo05/devhub-fe" },
       { label: "GitHub BE", href: "https://github.com/LucaMimmo05/devhub-be" },
@@ -57,8 +57,12 @@ export const projects: Project[] = [
     images: [
       { src: "/work/devhub/dashboard-16x10.webp", width: 4320, height: 2700 },
       { src: "/work/devhub/note-16x10.webp", width: 2520, height: 1575 },
+      { src: "/work/devhub/github-16x10.webp", width: 4320, height: 2700 },
+      { src: "/work/devhub/repo-16x10.webp", width: 4320, height: 2700 },
+      { src: "/work/devhub/projects-list-16x10.webp", width: 4320, height: 2700 },
+      { src: "/work/devhub/project-detail-16x10.webp", width: 4320, height: 2700 },
       { src: "/work/devhub/palette-16x10.webp", width: 2040, height: 1275 },
-      { src: "/work/devhub/projects-16x10.webp", width: 3360, height: 2100 },
+      { src: "/work/devhub/auth-16x10.webp", width: 4320, height: 2700 },
     ],
     devices: {
       desktop: { src: "/work/devhub/dashboard-16x10.webp", width: 4320, height: 2700 },
