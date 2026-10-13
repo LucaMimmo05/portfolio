@@ -101,24 +101,24 @@ export async function renderCaseStudyOg({ projectKey, lang, label, path }: {
 
   let body;
   if (projectKey === "devhub") {
-    const logo = await dataUri("devhub-logo.svg", "image/svg+xml");
-    const stats = [
-      ["3", "Due today", "#3B82F6"],
-      ["2", "Overdue", "#EF4444"],
-      ["2", "In progress", "#F59E0B"],
-      ["5", "Projects", "#A855F7"],
-    ];
+    const [logo, shot] = await Promise.all([dataUri("devhub-logo.svg", "image/svg+xml"), dataUri("devhub-dashboard.jpg", "image/jpeg")]);
+    const copy = lang === "en" ? ["Your dev work,", "in one place."] : ["Il tuo lavoro da dev,", "in un unico posto."];
+    // Same ambient surface as the home card (glow, dashboard in a window frame); the fine grid is left out,
+    // Satori does not render it. The frame stops at the strip so the path stays readable.
     body = (
-      <div style={{ width: "100%", height: "100%", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", gap: 56, background: "#121924", paddingBottom: 74 }}>
-        <img src={logo} width={620} height={124} alt="" />
-        <div style={{ display: "flex", borderRadius: 16, border: "1px solid rgba(255,255,255,0.08)", background: "#171f2b" }}>
-          {stats.map(([n, l, c], i) => (
-            <div key={l} style={{ display: "flex", alignItems: "center", gap: 12, padding: "16px 26px", fontSize: 24, color: "#cbd5e1", borderLeft: i ? "1px solid rgba(255,255,255,0.08)" : "none" }}>
-              <div style={{ width: 12, height: 12, borderRadius: 12, background: c }} />
-              <span style={{ fontWeight: 600, color: "#fff" }}>{n}</span>
-              <span>{l}</span>
-            </div>
-          ))}
+      <div style={{ width: "100%", height: "100%", display: "flex", backgroundColor: "#0d1526", backgroundImage: "radial-gradient(circle at 0% 0%, rgba(59,130,246,0.28), rgba(13,21,38,0) 55%)" }}>
+        <div style={{ position: "absolute", left: 72, top: 0, bottom: 74, width: 470, display: "flex", flexDirection: "column", justifyContent: "center" }}>
+          <img src={logo} width={300} height={60} alt="" />
+          <div style={{ display: "flex", flexDirection: "column", marginTop: 34, fontSize: 50, fontWeight: 600, letterSpacing: -1.5, lineHeight: 1.1, color: "#fff" }}>
+            <span>{copy[0]}</span>
+            <span style={{ color: "#3B82F6" }}>{copy[1]}</span>
+          </div>
+        </div>
+        <div style={{ position: "absolute", left: 590, top: 70, width: 880, height: 486, display: "flex", flexDirection: "column", borderRadius: "14px 14px 0 0", overflow: "hidden", border: "1px solid rgba(255,255,255,0.12)", background: "#121924", boxShadow: "0 30px 80px rgba(0,0,0,0.55)" }}>
+          <div style={{ height: 30, display: "flex", alignItems: "center", gap: 7, paddingLeft: 14, background: "#151d2a", borderBottom: "1px solid rgba(255,255,255,0.07)" }}>
+            {[0, 1, 2].map((i) => <div key={i} style={{ width: 10, height: 10, borderRadius: 10, background: "rgba(255,255,255,0.14)" }} />)}
+          </div>
+          <img src={shot} width={880} height={550} alt="" />
         </div>
       </div>
     );
