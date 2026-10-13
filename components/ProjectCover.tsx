@@ -1,9 +1,11 @@
 import Image from "next/image";
-import { Quicksand } from "next/font/google";
+import { Onest, Quicksand } from "next/font/google";
 import type { ProjectKey } from "@/data/projects";
 
 // Newmann's public site is set in Quicksand
 const quicksand = Quicksand({ subsets: ["latin"], weight: ["500", "600", "700"] });
+// DevHub's UI is set in Onest
+const onest = Onest({ subsets: ["latin"], weight: ["600"] });
 
 /**
  * Brand covers built from each project's own logo, colours and type, all at 16:10.
@@ -27,27 +29,31 @@ export default function ProjectCover({ projectKey, title, lang = "it", variant =
   }
 
   if (projectKey === "devhub") {
-    // DevHub's own palette: app background #121924, cards #171f2b, blue accent #3B82F6.
-    // The stats mirror the summary on DevHub's home page.
-    const stats = [
-      { n: 3, label: "Due today", color: "#3B82F6", d: "M4 6h16v14H4zM4 10h16M9 3v4M15 3v4" },
-      { n: 2, label: "Overdue", color: "#EF4444", d: "M12 3a9 9 0 1 0 0 18 9 9 0 0 0 0-18zM12 7v5l3 2" },
-      { n: 2, label: "In progress", color: "#F59E0B", d: "M3 12h4l3-7 4 14 3-7h4" },
-      { n: 5, label: "Projects", color: "#A855F7", d: "M3 7h6l2 2h10v10H3z" },
-    ];
+    // DevHub's "ambient" hero surface (#0d1526, blue glow, fine 40px grid fading out) with its home
+    // dashboard in a window frame. Sizes use container units so the tile scales as one image.
+    const copy = lang === "en" ? ["Your dev work,", "in one place."] : ["Il tuo lavoro da dev,", "in un unico posto."];
     return (
-      <div className={base} style={{ background: "#121924" }}>
-        <div className="absolute inset-0 flex flex-col items-center justify-center gap-[9%] px-[7%]">
-          <Image src="/work/devhub/logo.svg" alt={`${title} logo`} width={175} height={35} className="w-[50%] h-auto" />
-          <div className="flex items-stretch rounded-xl border border-white/[0.07] bg-[#171f2b] divide-x divide-white/[0.07]" aria-hidden="true">
-            {stats.map((st) => (
-              <span key={st.label} className="flex items-center gap-1.5 px-2.5 md:px-3.5 py-2 text-[10px] md:text-xs text-[#cbd5e1] whitespace-nowrap">
-                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke={st.color} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d={st.d} /></svg>
-                <b className="font-semibold text-white">{st.n}</b>
-                <span className="hidden sm:inline">{st.label}</span>
-              </span>
-            ))}
+      <div className={`${base} ${onest.className} @container`} style={{ background: "#0d1526" }}>
+        <div
+          className="absolute inset-0"
+          style={{ background: "radial-gradient(ellipse 60% 90% at 0% 0%, rgba(59,130,246,0.26), transparent 60%), radial-gradient(ellipse 45% 70% at 100% 100%, rgba(57,211,83,0.08), transparent 60%)" }}
+        />
+        <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.035)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.035)_1px,transparent_1px)] bg-[size:40px_40px] [mask-image:linear-gradient(to_right,black,transparent_70%)]" />
+
+        <div className="absolute inset-y-0 left-[7%] w-[40%] flex flex-col justify-center">
+          <Image src="/work/devhub/logo.svg" alt={`${title} logo`} width={175} height={35} className="w-[62%] h-auto" />
+          <p className="mt-[5cqw] font-semibold leading-[1.12] tracking-[-0.02em] text-white" style={{ fontSize: "4.4cqw" }}>
+            {copy[0]}
+            <br />
+            <span className="text-[#3B82F6]">{copy[1]}</span>
+          </p>
+        </div>
+
+        <div className="absolute left-[50%] top-[15%] w-[80%] overflow-hidden rounded-[1.2cqw] border border-white/[0.12] bg-[#121924] shadow-[0_30px_80px_rgba(0,0,0,0.55)]" aria-hidden="true">
+          <div className="flex h-[2.6cqw] items-center gap-[0.6cqw] pl-[1.2cqw] border-b border-white/[0.07] bg-[#151d2a]">
+            {[0, 1, 2].map((i) => <span key={i} className="size-[0.9cqw] rounded-full bg-white/[0.14]" />)}
           </div>
+          <Image src="/work/devhub/dashboard-16x10.webp" alt="" width={4320} height={2700} sizes="(min-width: 1024px) 40vw, 80vw" className="w-full h-auto" />
         </div>
       </div>
     );
