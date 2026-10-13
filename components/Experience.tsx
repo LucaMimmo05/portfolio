@@ -82,7 +82,7 @@ export default function Experience() {
         })()}
       </section>
 
-      {/* Education: its own section, three cards side by side */}
+      {/* Education: its own section, two cards side by side */}
       <section id="education" className="px-4 md:px-6 pb-28 md:pb-36">
         <AnimateIn className="flex flex-col items-center text-center mb-14 md:mb-16">
           <Pill>{exp.education}</Pill>
@@ -91,7 +91,7 @@ export default function Experience() {
           </h2>
         </AnimateIn>
 
-        <div className="max-w-[1440px] mx-auto grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-5">
+        <div className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-5">
           {exp.edu.map((edu, i) => (
             <AnimateIn key={edu.degree} delay={i * 90} className="h-full">
               <article
