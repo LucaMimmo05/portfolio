@@ -25,6 +25,7 @@ export default function Navbar() {
   const [hovered, setHovered] = useState<Section | null>(null);
   const [pill, setPill] = useState<{ x: number; w: number } | null>(null);
   const firstLink = useRef<HTMLAnchorElement>(null);
+  const menu = useRef<HTMLDivElement>(null);
 
   const otherLang = lang === "en" ? "it" : "en";
   const basePath = pathname.replace(/^\/(it|en)(?=\/|$)/, "") || "/";
@@ -60,12 +61,15 @@ export default function Navbar() {
 
   // Lock scroll, close on Escape, move focus into the menu
   useEffect(() => {
-    document.body.style.overflow = open ? "hidden" : "";
+    // Lock both html and body: on mobile Chrome body alone still lets the page (and the toolbar) scroll
+    const root = document.documentElement;
+    root.style.overflow = document.body.style.overflow = open ? "hidden" : "";
     if (!open) return;
+    if (menu.current) menu.current.scrollTop = 0;
     const onKey = (e: KeyboardEvent) => { if (e.key === "Escape") { setOpen(false); menuButton.current?.focus(); } };
     document.addEventListener("keydown", onKey);
     const focus = setTimeout(() => firstLink.current?.focus({ preventScroll: true }), 350);
-    return () => { document.removeEventListener("keydown", onKey); clearTimeout(focus); document.body.style.overflow = ""; };
+    return () => { document.removeEventListener("keydown", onKey); clearTimeout(focus); root.style.overflow = document.body.style.overflow = ""; };
   }, [open]);
 
   // Measure where the gliding pill should sit: the hovered item, otherwise the current section
@@ -205,16 +209,22 @@ export default function Navbar() {
 
       {/* Full-screen menu: grows out of the button as a circle */}
       <div
+        ref={menu}
         id="site-menu"
         aria-hidden={!open}
         inert={!open}
-        className="fixed inset-0 z-40 overflow-y-auto bg-[#060a0f]/95 backdrop-blur-2xl"
+        className="fixed inset-x-0 top-0 h-dvh z-40 overflow-y-auto overscroll-contain"
         style={{
+          // Opaque background with the glow painted on the scroll container itself, so it stays put while the menu scrolls
+          // (no backdrop-filter: blurring under an animating clip-path stutters on mobile)
+          background: "radial-gradient(60% 50% at 15% 20%, rgba(56,189,248,0.14), transparent 70%), radial-gradient(40% 40% at 90% 90%, rgba(56,189,248,0.08), transparent 70%), #060a0f",
           clipPath: open ? `circle(150% at ${origin.x} ${origin.y})` : `circle(0px at ${origin.x} ${origin.y})`,
           transition: `clip-path ${open ? 0.9 : 0.6}s ${EASE}`,
+          willChange: "clip-path",
         }}
       >
-        <div aria-hidden="true" className="pointer-events-none absolute inset-0" style={{ background: "radial-gradient(60% 50% at 15% 20%, rgba(56,189,248,0.14), transparent 70%), radial-gradient(40% 40% at 90% 90%, rgba(56,189,248,0.08), transparent 70%)" }} />
+        {/* Fades content out under the floating header when the menu scrolls */}
+        <div aria-hidden="true" className="pointer-events-none sticky top-0 z-10 -mb-24 h-24 bg-gradient-to-b from-[#060a0f] via-[#060a0f]/85 to-transparent" />
 
         <div className="relative min-h-full max-w-[1500px] mx-auto px-6 md:px-14 pt-28 md:pt-32 pb-10 grid grid-cols-1 lg:grid-cols-[1.2fr_1fr] gap-12 lg:gap-20">
           {/* Sections */}
