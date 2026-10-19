@@ -213,7 +213,7 @@ export default function Navbar() {
         id="site-menu"
         aria-hidden={!open}
         inert={!open}
-        className="fixed inset-x-0 top-0 h-dvh z-40 overflow-y-auto overscroll-contain"
+        className="fixed inset-x-0 top-0 -bottom-[25vh] z-40 overflow-y-auto overscroll-contain"
         style={{
           // Opaque background with the glow painted on the scroll container itself, so it stays put while the menu scrolls
           // (no backdrop-filter: blurring under an animating clip-path stutters on mobile)
@@ -226,7 +226,7 @@ export default function Navbar() {
         {/* Fades content out under the floating header when the menu scrolls */}
         <div aria-hidden="true" className="pointer-events-none sticky top-0 z-10 -mb-24 h-24 bg-gradient-to-b from-[#060a0f] via-[#060a0f]/85 to-transparent" />
 
-        <div className="relative min-h-full max-w-[1500px] mx-auto px-6 md:px-14 pt-28 md:pt-32 pb-10 grid grid-cols-1 lg:grid-cols-[1.2fr_1fr] gap-12 lg:gap-20">
+        <div className="relative min-h-dvh max-w-[1500px] mx-auto px-6 md:px-14 pt-28 md:pt-32 pb-10 grid grid-cols-1 lg:grid-cols-[1.2fr_1fr] gap-12 lg:gap-20">
           {/* Sections */}
           <nav aria-label={t.nav.primary} className="flex flex-col justify-center">
             <ul className="space-y-1 md:space-y-2">
@@ -314,6 +314,9 @@ export default function Navbar() {
             </div>
           </div>
         </div>
+        {/* The overlay runs 25vh past the bottom edge so pulling past the end (or the mobile toolbar collapsing)
+            never uncovers the page; a matching spacer at the end keeps the last row reachable */}
+        <div aria-hidden="true" className="h-[25vh]" />
       </div>
     </>
   );
